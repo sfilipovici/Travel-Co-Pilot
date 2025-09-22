@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title" shape-rendering="geometricPrecision">
+  <title>Travel Copilot — App Icon (Color)</title>
+  <defs>
+    <!-- Colors -->
+    <style><![CDATA[
+      :root {
+        --teal: #11A7A0; /* primary teal/blue-green */
+        --teal-dark: #0E8C87;
+        --coral: #FF6F61; /* warm coral/clay accent */
+      }
+    ]]></style>
+
+    <!-- Mask to create subtle chat bubble tail (negative space) -->
+    <mask id="chatTailMask">
+      <!-- Keep (white) -->
+      <rect x="0" y="0" width="256" height="256" fill="white"/>
+      <!-- Map pin silhouette: circle + pointer -->
+      <circle cx="128" cy="96" r="72" fill="black"/>
+      <polygon points="128,224 96,160 160,160" fill="black"/>
+      <!-- Cut (black) the chat tail notch at ~4 o'clock on the head -->
+      <path d="M156 118 L182 134 L152 140 Z" fill="white"/>
+    </mask>
+  </defs>
+
+  <!-- Base map pin (union of circle + triangle), masked to create chat tail notch -->
+  <g mask="url(#chatTailMask)">
+    <circle cx="128" cy="96" r="72" fill="var(--teal)"/>
+    <polygon points="128,224 96,160 160,160" fill="var(--teal)"/>
+  </g>
+
+  <!-- Compass needle (friendly, geometric, high-contrast) -->
+  <!-- Diamond split into two colored halves, rotated slightly for dynamism -->
+  <g transform="rotate(18 128 120)">
+    <!-- right/coral half -->
+    <polygon points="128,60 160,120 128,180" fill="var(--coral)"/>
+    <!-- left/teal-dark half -->
+    <polygon points="128,60 96,120 128,180" fill="var(--teal-dark)"/>
+  </g>
+</svg>
