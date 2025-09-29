@@ -7,20 +7,16 @@ part 'trip.g.dart';
 @freezed
 abstract class Trip with _$Trip {
   const factory Trip({
-    @Default('') String id, // Safe default
-    @Default('') String city, // Prevent null crash
-    DateTime? startDate,
-    @Default([]) List<TripDay> days,
-    @Default([]) List<String> summaryTips,
-
-    int? budgetAmount,
-    String? currency,
-
-    @Default([]) List<String> categories,
-
+    required String id,
+    @JsonKey(name: 'user_id') required String userId,
+    required String city,
+    @JsonKey(name: 'start_date') DateTime? startDate,
+    @JsonKey(name: 'end_date') DateTime? endDate,
+    @JsonKey(name: 'days') required List<TripDay> days,
     @JsonKey(name: 'is_active') @Default(false) bool isActive,
-
-    DateTime? createdAt,
+    @JsonKey(name: 'categories') @Default([]) List<String> categories,
+    @JsonKey(name: 'budget_amount') int? budgetAmount,
+    String? currency,
   }) = _Trip;
 
   factory Trip.fromJson(Map<String, dynamic> json) => _$TripFromJson(json);
@@ -43,14 +39,15 @@ abstract class TripBlock with _$TripBlock {
     @Default('') String title,
     String? time,
     String? reason,
-    String? placeId,
+    @JsonKey(name: 'place_id') String? placeId,
     TripCoords? coords,
     @Default([]) List<String> categories,
     double? rating,
-    int? priceLevel,
-    List<String>? openingHours,
+    @JsonKey(name: 'map_url') String? mapUrl, // ✅ Added mapUrl
+    @JsonKey(name: 'price_level') int? priceLevel,
+    @JsonKey(name: 'opening_hours') List<String>? openingHours,
     String? address,
-    String? crowdHint,
+    @JsonKey(name: 'crowd_hint') String? crowdHint,
     @Default([]) List<String> sources,
   }) = _TripBlock;
 
@@ -71,6 +68,7 @@ extension TripBlockPoi on TripBlock {
       priceLevel: priceLevel,
       openingHours: openingHours,
       address: address,
+      mapUrl: mapUrl, // ✅ pass along mapUrl
       timeOfDay: time ?? '',
       reason: reason ?? '',
       budgetHint: '',

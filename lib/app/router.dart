@@ -9,6 +9,7 @@ import 'package:travel_copilot/features/plan/presentation/plan_page.dart';
 import 'package:travel_copilot/features/profile/presentation/profile_page.dart';
 import 'package:travel_copilot/features/auth/presentation/login_page.dart';
 import 'package:travel_copilot/features/auth/auth_controller.dart';
+import 'package:travel_copilot/features/trip/presentation/trips_page.dart';
 
 /// Provider for the global router so widgets can watch it via Riverpod
 final appRouterProvider = Provider<GoRouter>((ref) {
@@ -69,6 +70,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             name: 'profile',
             pageBuilder: (context, state) =>
                 const NoTransitionPage(child: ProfilePage()),
+          ),
+
+          GoRoute(
+            path: '/trips',
+            builder: (context, state) => const TripsPage(),
           ),
         ],
       ),

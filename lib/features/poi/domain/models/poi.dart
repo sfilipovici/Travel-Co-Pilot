@@ -16,6 +16,7 @@ class POI extends Equatable {
     this.priceLevel,
     this.openingHours,
     this.address,
+    this.mapUrl,
   });
 
   factory POI.fromJson(Map<String, dynamic> json) {
@@ -37,6 +38,7 @@ class POI extends Equatable {
           ?.map((e) => e.toString())
           .toList(),
       address: json['address']?.toString(),
+      mapUrl: json['map_url']?.toString(),
       timeOfDay: json['time']?.toString() ?? '',
       reason: json['reason']?.toString() ?? '',
       budgetHint: json['budget_hint']?.toString() ?? '',
@@ -48,6 +50,7 @@ class POI extends Equatable {
           const [],
     );
   }
+
   final String placeId;
   final String name;
   final double lat;
@@ -57,6 +60,7 @@ class POI extends Equatable {
   final int? priceLevel;
   final List<String>? openingHours;
   final String? address;
+  final String? mapUrl; // ✅ new
   final String timeOfDay;
   final String reason;
   final String budgetHint;
@@ -74,6 +78,7 @@ class POI extends Equatable {
     priceLevel,
     openingHours,
     address,
+    mapUrl,
     timeOfDay,
     reason,
     budgetHint,

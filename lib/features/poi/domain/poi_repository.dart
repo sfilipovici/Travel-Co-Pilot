@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:travel_copilot/features/poi/domain/models/poi.dart';
 
 class PoiRepository {
-
   PoiRepository({Dio? dio}) : _dio = dio ?? Dio();
   final Dio _dio;
 
@@ -19,9 +18,7 @@ class PoiRepository {
         'days': days,
         'startDate': startDate.toIso8601String(),
       },
-      options: Options(headers: {
-        'Content-Type': 'application/json',
-      }),
+      options: Options(headers: {'Content-Type': 'application/json'}),
     );
 
     if (response.statusCode == 200 && response.data != null) {

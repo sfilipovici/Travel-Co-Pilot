@@ -7,45 +7,39 @@ part of 'trip.dart';
 // **************************************************************************
 
 _Trip _$TripFromJson(Map<String, dynamic> json) => _Trip(
-  id: json['id'] as String? ?? '',
-  city: json['city'] as String? ?? '',
-  startDate: json['startDate'] == null
+  id: json['id'] as String,
+  userId: json['user_id'] as String,
+  city: json['city'] as String,
+  startDate: json['start_date'] == null
       ? null
-      : DateTime.parse(json['startDate'] as String),
-  days:
-      (json['days'] as List<dynamic>?)
-          ?.map((e) => TripDay.fromJson(e as Map<String, dynamic>))
-          .toList() ??
-      const [],
-  summaryTips:
-      (json['summaryTips'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList() ??
-      const [],
-  budgetAmount: (json['budgetAmount'] as num?)?.toInt(),
-  currency: json['currency'] as String?,
+      : DateTime.parse(json['start_date'] as String),
+  endDate: json['end_date'] == null
+      ? null
+      : DateTime.parse(json['end_date'] as String),
+  days: (json['days'] as List<dynamic>)
+      .map((e) => TripDay.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  isActive: json['is_active'] as bool? ?? false,
   categories:
       (json['categories'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList() ??
       const [],
-  isActive: json['is_active'] as bool? ?? false,
-  createdAt: json['createdAt'] == null
-      ? null
-      : DateTime.parse(json['createdAt'] as String),
+  budgetAmount: (json['budget_amount'] as num?)?.toInt(),
+  currency: json['currency'] as String?,
 );
 
 Map<String, dynamic> _$TripToJson(_Trip instance) => <String, dynamic>{
   'id': instance.id,
+  'user_id': instance.userId,
   'city': instance.city,
-  'startDate': instance.startDate?.toIso8601String(),
+  'start_date': instance.startDate?.toIso8601String(),
+  'end_date': instance.endDate?.toIso8601String(),
   'days': instance.days,
-  'summaryTips': instance.summaryTips,
-  'budgetAmount': instance.budgetAmount,
-  'currency': instance.currency,
-  'categories': instance.categories,
   'is_active': instance.isActive,
-  'createdAt': instance.createdAt?.toIso8601String(),
+  'categories': instance.categories,
+  'budget_amount': instance.budgetAmount,
+  'currency': instance.currency,
 };
 
 _TripDay _$TripDayFromJson(Map<String, dynamic> json) => _TripDay(
@@ -66,7 +60,7 @@ _TripBlock _$TripBlockFromJson(Map<String, dynamic> json) => _TripBlock(
   title: json['title'] as String? ?? '',
   time: json['time'] as String?,
   reason: json['reason'] as String?,
-  placeId: json['placeId'] as String?,
+  placeId: json['place_id'] as String?,
   coords: json['coords'] == null
       ? null
       : TripCoords.fromJson(json['coords'] as Map<String, dynamic>),
@@ -76,12 +70,13 @@ _TripBlock _$TripBlockFromJson(Map<String, dynamic> json) => _TripBlock(
           .toList() ??
       const [],
   rating: (json['rating'] as num?)?.toDouble(),
-  priceLevel: (json['priceLevel'] as num?)?.toInt(),
-  openingHours: (json['openingHours'] as List<dynamic>?)
+  mapUrl: json['map_url'] as String?,
+  priceLevel: (json['price_level'] as num?)?.toInt(),
+  openingHours: (json['opening_hours'] as List<dynamic>?)
       ?.map((e) => e as String)
       .toList(),
   address: json['address'] as String?,
-  crowdHint: json['crowdHint'] as String?,
+  crowdHint: json['crowd_hint'] as String?,
   sources:
       (json['sources'] as List<dynamic>?)?.map((e) => e as String).toList() ??
       const [],
@@ -92,14 +87,15 @@ Map<String, dynamic> _$TripBlockToJson(_TripBlock instance) =>
       'title': instance.title,
       'time': instance.time,
       'reason': instance.reason,
-      'placeId': instance.placeId,
+      'place_id': instance.placeId,
       'coords': instance.coords,
       'categories': instance.categories,
       'rating': instance.rating,
-      'priceLevel': instance.priceLevel,
-      'openingHours': instance.openingHours,
+      'map_url': instance.mapUrl,
+      'price_level': instance.priceLevel,
+      'opening_hours': instance.openingHours,
       'address': instance.address,
-      'crowdHint': instance.crowdHint,
+      'crowd_hint': instance.crowdHint,
       'sources': instance.sources,
     };
 

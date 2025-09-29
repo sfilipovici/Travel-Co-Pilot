@@ -15,9 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Trip {
 
- String get id;// Safe default
- String get city;// Prevent null crash
- DateTime? get startDate; List<TripDay> get days; List<String> get summaryTips; int? get budgetAmount; String? get currency; List<String> get categories;@JsonKey(name: 'is_active') bool get isActive; DateTime? get createdAt;
+ String get id;@JsonKey(name: 'user_id') String get userId; String get city;@JsonKey(name: 'start_date') DateTime? get startDate;@JsonKey(name: 'end_date') DateTime? get endDate;@JsonKey(name: 'days') List<TripDay> get days;@JsonKey(name: 'is_active') bool get isActive;@JsonKey(name: 'categories') List<String> get categories;@JsonKey(name: 'budget_amount') int? get budgetAmount; String? get currency;
 /// Create a copy of Trip
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,16 +28,16 @@ $TripCopyWith<Trip> get copyWith => _$TripCopyWithImpl<Trip>(this as Trip, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Trip&&(identical(other.id, id) || other.id == id)&&(identical(other.city, city) || other.city == city)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&const DeepCollectionEquality().equals(other.days, days)&&const DeepCollectionEquality().equals(other.summaryTips, summaryTips)&&(identical(other.budgetAmount, budgetAmount) || other.budgetAmount == budgetAmount)&&(identical(other.currency, currency) || other.currency == currency)&&const DeepCollectionEquality().equals(other.categories, categories)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Trip&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.city, city) || other.city == city)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.endDate, endDate) || other.endDate == endDate)&&const DeepCollectionEquality().equals(other.days, days)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&const DeepCollectionEquality().equals(other.categories, categories)&&(identical(other.budgetAmount, budgetAmount) || other.budgetAmount == budgetAmount)&&(identical(other.currency, currency) || other.currency == currency));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,city,startDate,const DeepCollectionEquality().hash(days),const DeepCollectionEquality().hash(summaryTips),budgetAmount,currency,const DeepCollectionEquality().hash(categories),isActive,createdAt);
+int get hashCode => Object.hash(runtimeType,id,userId,city,startDate,endDate,const DeepCollectionEquality().hash(days),isActive,const DeepCollectionEquality().hash(categories),budgetAmount,currency);
 
 @override
 String toString() {
-  return 'Trip(id: $id, city: $city, startDate: $startDate, days: $days, summaryTips: $summaryTips, budgetAmount: $budgetAmount, currency: $currency, categories: $categories, isActive: $isActive, createdAt: $createdAt)';
+  return 'Trip(id: $id, userId: $userId, city: $city, startDate: $startDate, endDate: $endDate, days: $days, isActive: $isActive, categories: $categories, budgetAmount: $budgetAmount, currency: $currency)';
 }
 
 
@@ -50,7 +48,7 @@ abstract mixin class $TripCopyWith<$Res>  {
   factory $TripCopyWith(Trip value, $Res Function(Trip) _then) = _$TripCopyWithImpl;
 @useResult
 $Res call({
- String id, String city, DateTime? startDate, List<TripDay> days, List<String> summaryTips, int? budgetAmount, String? currency, List<String> categories,@JsonKey(name: 'is_active') bool isActive, DateTime? createdAt
+ String id,@JsonKey(name: 'user_id') String userId, String city,@JsonKey(name: 'start_date') DateTime? startDate,@JsonKey(name: 'end_date') DateTime? endDate,@JsonKey(name: 'days') List<TripDay> days,@JsonKey(name: 'is_active') bool isActive,@JsonKey(name: 'categories') List<String> categories,@JsonKey(name: 'budget_amount') int? budgetAmount, String? currency
 });
 
 
@@ -67,19 +65,19 @@ class _$TripCopyWithImpl<$Res>
 
 /// Create a copy of Trip
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? city = null,Object? startDate = freezed,Object? days = null,Object? summaryTips = null,Object? budgetAmount = freezed,Object? currency = freezed,Object? categories = null,Object? isActive = null,Object? createdAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? userId = null,Object? city = null,Object? startDate = freezed,Object? endDate = freezed,Object? days = null,Object? isActive = null,Object? categories = null,Object? budgetAmount = freezed,Object? currency = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,city: null == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
 as String,startDate: freezed == startDate ? _self.startDate : startDate // ignore: cast_nullable_to_non_nullable
+as DateTime?,endDate: freezed == endDate ? _self.endDate : endDate // ignore: cast_nullable_to_non_nullable
 as DateTime?,days: null == days ? _self.days : days // ignore: cast_nullable_to_non_nullable
-as List<TripDay>,summaryTips: null == summaryTips ? _self.summaryTips : summaryTips // ignore: cast_nullable_to_non_nullable
+as List<TripDay>,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
+as bool,categories: null == categories ? _self.categories : categories // ignore: cast_nullable_to_non_nullable
 as List<String>,budgetAmount: freezed == budgetAmount ? _self.budgetAmount : budgetAmount // ignore: cast_nullable_to_non_nullable
 as int?,currency: freezed == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
-as String?,categories: null == categories ? _self.categories : categories // ignore: cast_nullable_to_non_nullable
-as List<String>,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
-as bool,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as DateTime?,
+as String?,
   ));
 }
 
@@ -164,10 +162,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String city,  DateTime? startDate,  List<TripDay> days,  List<String> summaryTips,  int? budgetAmount,  String? currency,  List<String> categories, @JsonKey(name: 'is_active')  bool isActive,  DateTime? createdAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @JsonKey(name: 'user_id')  String userId,  String city, @JsonKey(name: 'start_date')  DateTime? startDate, @JsonKey(name: 'end_date')  DateTime? endDate, @JsonKey(name: 'days')  List<TripDay> days, @JsonKey(name: 'is_active')  bool isActive, @JsonKey(name: 'categories')  List<String> categories, @JsonKey(name: 'budget_amount')  int? budgetAmount,  String? currency)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Trip() when $default != null:
-return $default(_that.id,_that.city,_that.startDate,_that.days,_that.summaryTips,_that.budgetAmount,_that.currency,_that.categories,_that.isActive,_that.createdAt);case _:
+return $default(_that.id,_that.userId,_that.city,_that.startDate,_that.endDate,_that.days,_that.isActive,_that.categories,_that.budgetAmount,_that.currency);case _:
   return orElse();
 
 }
@@ -185,10 +183,10 @@ return $default(_that.id,_that.city,_that.startDate,_that.days,_that.summaryTips
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String city,  DateTime? startDate,  List<TripDay> days,  List<String> summaryTips,  int? budgetAmount,  String? currency,  List<String> categories, @JsonKey(name: 'is_active')  bool isActive,  DateTime? createdAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @JsonKey(name: 'user_id')  String userId,  String city, @JsonKey(name: 'start_date')  DateTime? startDate, @JsonKey(name: 'end_date')  DateTime? endDate, @JsonKey(name: 'days')  List<TripDay> days, @JsonKey(name: 'is_active')  bool isActive, @JsonKey(name: 'categories')  List<String> categories, @JsonKey(name: 'budget_amount')  int? budgetAmount,  String? currency)  $default,) {final _that = this;
 switch (_that) {
 case _Trip():
-return $default(_that.id,_that.city,_that.startDate,_that.days,_that.summaryTips,_that.budgetAmount,_that.currency,_that.categories,_that.isActive,_that.createdAt);case _:
+return $default(_that.id,_that.userId,_that.city,_that.startDate,_that.endDate,_that.days,_that.isActive,_that.categories,_that.budgetAmount,_that.currency);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -205,10 +203,10 @@ return $default(_that.id,_that.city,_that.startDate,_that.days,_that.summaryTips
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String city,  DateTime? startDate,  List<TripDay> days,  List<String> summaryTips,  int? budgetAmount,  String? currency,  List<String> categories, @JsonKey(name: 'is_active')  bool isActive,  DateTime? createdAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @JsonKey(name: 'user_id')  String userId,  String city, @JsonKey(name: 'start_date')  DateTime? startDate, @JsonKey(name: 'end_date')  DateTime? endDate, @JsonKey(name: 'days')  List<TripDay> days, @JsonKey(name: 'is_active')  bool isActive, @JsonKey(name: 'categories')  List<String> categories, @JsonKey(name: 'budget_amount')  int? budgetAmount,  String? currency)?  $default,) {final _that = this;
 switch (_that) {
 case _Trip() when $default != null:
-return $default(_that.id,_that.city,_that.startDate,_that.days,_that.summaryTips,_that.budgetAmount,_that.currency,_that.categories,_that.isActive,_that.createdAt);case _:
+return $default(_that.id,_that.userId,_that.city,_that.startDate,_that.endDate,_that.days,_that.isActive,_that.categories,_that.budgetAmount,_that.currency);case _:
   return null;
 
 }
@@ -220,39 +218,31 @@ return $default(_that.id,_that.city,_that.startDate,_that.days,_that.summaryTips
 @JsonSerializable()
 
 class _Trip implements Trip {
-  const _Trip({this.id = '', this.city = '', this.startDate, final  List<TripDay> days = const [], final  List<String> summaryTips = const [], this.budgetAmount, this.currency, final  List<String> categories = const [], @JsonKey(name: 'is_active') this.isActive = false, this.createdAt}): _days = days,_summaryTips = summaryTips,_categories = categories;
+  const _Trip({required this.id, @JsonKey(name: 'user_id') required this.userId, required this.city, @JsonKey(name: 'start_date') this.startDate, @JsonKey(name: 'end_date') this.endDate, @JsonKey(name: 'days') required final  List<TripDay> days, @JsonKey(name: 'is_active') this.isActive = false, @JsonKey(name: 'categories') final  List<String> categories = const [], @JsonKey(name: 'budget_amount') this.budgetAmount, this.currency}): _days = days,_categories = categories;
   factory _Trip.fromJson(Map<String, dynamic> json) => _$TripFromJson(json);
 
-@override@JsonKey() final  String id;
-// Safe default
-@override@JsonKey() final  String city;
-// Prevent null crash
-@override final  DateTime? startDate;
+@override final  String id;
+@override@JsonKey(name: 'user_id') final  String userId;
+@override final  String city;
+@override@JsonKey(name: 'start_date') final  DateTime? startDate;
+@override@JsonKey(name: 'end_date') final  DateTime? endDate;
  final  List<TripDay> _days;
-@override@JsonKey() List<TripDay> get days {
+@override@JsonKey(name: 'days') List<TripDay> get days {
   if (_days is EqualUnmodifiableListView) return _days;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_days);
 }
 
- final  List<String> _summaryTips;
-@override@JsonKey() List<String> get summaryTips {
-  if (_summaryTips is EqualUnmodifiableListView) return _summaryTips;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_summaryTips);
-}
-
-@override final  int? budgetAmount;
-@override final  String? currency;
+@override@JsonKey(name: 'is_active') final  bool isActive;
  final  List<String> _categories;
-@override@JsonKey() List<String> get categories {
+@override@JsonKey(name: 'categories') List<String> get categories {
   if (_categories is EqualUnmodifiableListView) return _categories;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_categories);
 }
 
-@override@JsonKey(name: 'is_active') final  bool isActive;
-@override final  DateTime? createdAt;
+@override@JsonKey(name: 'budget_amount') final  int? budgetAmount;
+@override final  String? currency;
 
 /// Create a copy of Trip
 /// with the given fields replaced by the non-null parameter values.
@@ -267,16 +257,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Trip&&(identical(other.id, id) || other.id == id)&&(identical(other.city, city) || other.city == city)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&const DeepCollectionEquality().equals(other._days, _days)&&const DeepCollectionEquality().equals(other._summaryTips, _summaryTips)&&(identical(other.budgetAmount, budgetAmount) || other.budgetAmount == budgetAmount)&&(identical(other.currency, currency) || other.currency == currency)&&const DeepCollectionEquality().equals(other._categories, _categories)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Trip&&(identical(other.id, id) || other.id == id)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.city, city) || other.city == city)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.endDate, endDate) || other.endDate == endDate)&&const DeepCollectionEquality().equals(other._days, _days)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&const DeepCollectionEquality().equals(other._categories, _categories)&&(identical(other.budgetAmount, budgetAmount) || other.budgetAmount == budgetAmount)&&(identical(other.currency, currency) || other.currency == currency));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,city,startDate,const DeepCollectionEquality().hash(_days),const DeepCollectionEquality().hash(_summaryTips),budgetAmount,currency,const DeepCollectionEquality().hash(_categories),isActive,createdAt);
+int get hashCode => Object.hash(runtimeType,id,userId,city,startDate,endDate,const DeepCollectionEquality().hash(_days),isActive,const DeepCollectionEquality().hash(_categories),budgetAmount,currency);
 
 @override
 String toString() {
-  return 'Trip(id: $id, city: $city, startDate: $startDate, days: $days, summaryTips: $summaryTips, budgetAmount: $budgetAmount, currency: $currency, categories: $categories, isActive: $isActive, createdAt: $createdAt)';
+  return 'Trip(id: $id, userId: $userId, city: $city, startDate: $startDate, endDate: $endDate, days: $days, isActive: $isActive, categories: $categories, budgetAmount: $budgetAmount, currency: $currency)';
 }
 
 
@@ -287,7 +277,7 @@ abstract mixin class _$TripCopyWith<$Res> implements $TripCopyWith<$Res> {
   factory _$TripCopyWith(_Trip value, $Res Function(_Trip) _then) = __$TripCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String city, DateTime? startDate, List<TripDay> days, List<String> summaryTips, int? budgetAmount, String? currency, List<String> categories,@JsonKey(name: 'is_active') bool isActive, DateTime? createdAt
+ String id,@JsonKey(name: 'user_id') String userId, String city,@JsonKey(name: 'start_date') DateTime? startDate,@JsonKey(name: 'end_date') DateTime? endDate,@JsonKey(name: 'days') List<TripDay> days,@JsonKey(name: 'is_active') bool isActive,@JsonKey(name: 'categories') List<String> categories,@JsonKey(name: 'budget_amount') int? budgetAmount, String? currency
 });
 
 
@@ -304,19 +294,19 @@ class __$TripCopyWithImpl<$Res>
 
 /// Create a copy of Trip
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? city = null,Object? startDate = freezed,Object? days = null,Object? summaryTips = null,Object? budgetAmount = freezed,Object? currency = freezed,Object? categories = null,Object? isActive = null,Object? createdAt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? userId = null,Object? city = null,Object? startDate = freezed,Object? endDate = freezed,Object? days = null,Object? isActive = null,Object? categories = null,Object? budgetAmount = freezed,Object? currency = freezed,}) {
   return _then(_Trip(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,city: null == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
 as String,startDate: freezed == startDate ? _self.startDate : startDate // ignore: cast_nullable_to_non_nullable
+as DateTime?,endDate: freezed == endDate ? _self.endDate : endDate // ignore: cast_nullable_to_non_nullable
 as DateTime?,days: null == days ? _self._days : days // ignore: cast_nullable_to_non_nullable
-as List<TripDay>,summaryTips: null == summaryTips ? _self._summaryTips : summaryTips // ignore: cast_nullable_to_non_nullable
+as List<TripDay>,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
+as bool,categories: null == categories ? _self._categories : categories // ignore: cast_nullable_to_non_nullable
 as List<String>,budgetAmount: freezed == budgetAmount ? _self.budgetAmount : budgetAmount // ignore: cast_nullable_to_non_nullable
 as int?,currency: freezed == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
-as String?,categories: null == categories ? _self._categories : categories // ignore: cast_nullable_to_non_nullable
-as List<String>,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
-as bool,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as DateTime?,
+as String?,
   ));
 }
 
@@ -599,7 +589,8 @@ as List<TripBlock>,
 /// @nodoc
 mixin _$TripBlock {
 
- String get title; String? get time; String? get reason; String? get placeId; TripCoords? get coords; List<String> get categories; double? get rating; int? get priceLevel; List<String>? get openingHours; String? get address; String? get crowdHint; List<String> get sources;
+ String get title; String? get time; String? get reason;@JsonKey(name: 'place_id') String? get placeId; TripCoords? get coords; List<String> get categories; double? get rating;@JsonKey(name: 'map_url') String? get mapUrl;// ✅ Added mapUrl
+@JsonKey(name: 'price_level') int? get priceLevel;@JsonKey(name: 'opening_hours') List<String>? get openingHours; String? get address;@JsonKey(name: 'crowd_hint') String? get crowdHint; List<String> get sources;
 /// Create a copy of TripBlock
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -612,16 +603,16 @@ $TripBlockCopyWith<TripBlock> get copyWith => _$TripBlockCopyWithImpl<TripBlock>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TripBlock&&(identical(other.title, title) || other.title == title)&&(identical(other.time, time) || other.time == time)&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.placeId, placeId) || other.placeId == placeId)&&(identical(other.coords, coords) || other.coords == coords)&&const DeepCollectionEquality().equals(other.categories, categories)&&(identical(other.rating, rating) || other.rating == rating)&&(identical(other.priceLevel, priceLevel) || other.priceLevel == priceLevel)&&const DeepCollectionEquality().equals(other.openingHours, openingHours)&&(identical(other.address, address) || other.address == address)&&(identical(other.crowdHint, crowdHint) || other.crowdHint == crowdHint)&&const DeepCollectionEquality().equals(other.sources, sources));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TripBlock&&(identical(other.title, title) || other.title == title)&&(identical(other.time, time) || other.time == time)&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.placeId, placeId) || other.placeId == placeId)&&(identical(other.coords, coords) || other.coords == coords)&&const DeepCollectionEquality().equals(other.categories, categories)&&(identical(other.rating, rating) || other.rating == rating)&&(identical(other.mapUrl, mapUrl) || other.mapUrl == mapUrl)&&(identical(other.priceLevel, priceLevel) || other.priceLevel == priceLevel)&&const DeepCollectionEquality().equals(other.openingHours, openingHours)&&(identical(other.address, address) || other.address == address)&&(identical(other.crowdHint, crowdHint) || other.crowdHint == crowdHint)&&const DeepCollectionEquality().equals(other.sources, sources));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,time,reason,placeId,coords,const DeepCollectionEquality().hash(categories),rating,priceLevel,const DeepCollectionEquality().hash(openingHours),address,crowdHint,const DeepCollectionEquality().hash(sources));
+int get hashCode => Object.hash(runtimeType,title,time,reason,placeId,coords,const DeepCollectionEquality().hash(categories),rating,mapUrl,priceLevel,const DeepCollectionEquality().hash(openingHours),address,crowdHint,const DeepCollectionEquality().hash(sources));
 
 @override
 String toString() {
-  return 'TripBlock(title: $title, time: $time, reason: $reason, placeId: $placeId, coords: $coords, categories: $categories, rating: $rating, priceLevel: $priceLevel, openingHours: $openingHours, address: $address, crowdHint: $crowdHint, sources: $sources)';
+  return 'TripBlock(title: $title, time: $time, reason: $reason, placeId: $placeId, coords: $coords, categories: $categories, rating: $rating, mapUrl: $mapUrl, priceLevel: $priceLevel, openingHours: $openingHours, address: $address, crowdHint: $crowdHint, sources: $sources)';
 }
 
 
@@ -632,7 +623,7 @@ abstract mixin class $TripBlockCopyWith<$Res>  {
   factory $TripBlockCopyWith(TripBlock value, $Res Function(TripBlock) _then) = _$TripBlockCopyWithImpl;
 @useResult
 $Res call({
- String title, String? time, String? reason, String? placeId, TripCoords? coords, List<String> categories, double? rating, int? priceLevel, List<String>? openingHours, String? address, String? crowdHint, List<String> sources
+ String title, String? time, String? reason,@JsonKey(name: 'place_id') String? placeId, TripCoords? coords, List<String> categories, double? rating,@JsonKey(name: 'map_url') String? mapUrl,@JsonKey(name: 'price_level') int? priceLevel,@JsonKey(name: 'opening_hours') List<String>? openingHours, String? address,@JsonKey(name: 'crowd_hint') String? crowdHint, List<String> sources
 });
 
 
@@ -649,7 +640,7 @@ class _$TripBlockCopyWithImpl<$Res>
 
 /// Create a copy of TripBlock
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? time = freezed,Object? reason = freezed,Object? placeId = freezed,Object? coords = freezed,Object? categories = null,Object? rating = freezed,Object? priceLevel = freezed,Object? openingHours = freezed,Object? address = freezed,Object? crowdHint = freezed,Object? sources = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? time = freezed,Object? reason = freezed,Object? placeId = freezed,Object? coords = freezed,Object? categories = null,Object? rating = freezed,Object? mapUrl = freezed,Object? priceLevel = freezed,Object? openingHours = freezed,Object? address = freezed,Object? crowdHint = freezed,Object? sources = null,}) {
   return _then(_self.copyWith(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,time: freezed == time ? _self.time : time // ignore: cast_nullable_to_non_nullable
@@ -658,7 +649,8 @@ as String?,placeId: freezed == placeId ? _self.placeId : placeId // ignore: cast
 as String?,coords: freezed == coords ? _self.coords : coords // ignore: cast_nullable_to_non_nullable
 as TripCoords?,categories: null == categories ? _self.categories : categories // ignore: cast_nullable_to_non_nullable
 as List<String>,rating: freezed == rating ? _self.rating : rating // ignore: cast_nullable_to_non_nullable
-as double?,priceLevel: freezed == priceLevel ? _self.priceLevel : priceLevel // ignore: cast_nullable_to_non_nullable
+as double?,mapUrl: freezed == mapUrl ? _self.mapUrl : mapUrl // ignore: cast_nullable_to_non_nullable
+as String?,priceLevel: freezed == priceLevel ? _self.priceLevel : priceLevel // ignore: cast_nullable_to_non_nullable
 as int?,openingHours: freezed == openingHours ? _self.openingHours : openingHours // ignore: cast_nullable_to_non_nullable
 as List<String>?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
 as String?,crowdHint: freezed == crowdHint ? _self.crowdHint : crowdHint // ignore: cast_nullable_to_non_nullable
@@ -760,10 +752,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String? time,  String? reason,  String? placeId,  TripCoords? coords,  List<String> categories,  double? rating,  int? priceLevel,  List<String>? openingHours,  String? address,  String? crowdHint,  List<String> sources)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String? time,  String? reason, @JsonKey(name: 'place_id')  String? placeId,  TripCoords? coords,  List<String> categories,  double? rating, @JsonKey(name: 'map_url')  String? mapUrl, @JsonKey(name: 'price_level')  int? priceLevel, @JsonKey(name: 'opening_hours')  List<String>? openingHours,  String? address, @JsonKey(name: 'crowd_hint')  String? crowdHint,  List<String> sources)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TripBlock() when $default != null:
-return $default(_that.title,_that.time,_that.reason,_that.placeId,_that.coords,_that.categories,_that.rating,_that.priceLevel,_that.openingHours,_that.address,_that.crowdHint,_that.sources);case _:
+return $default(_that.title,_that.time,_that.reason,_that.placeId,_that.coords,_that.categories,_that.rating,_that.mapUrl,_that.priceLevel,_that.openingHours,_that.address,_that.crowdHint,_that.sources);case _:
   return orElse();
 
 }
@@ -781,10 +773,10 @@ return $default(_that.title,_that.time,_that.reason,_that.placeId,_that.coords,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String? time,  String? reason,  String? placeId,  TripCoords? coords,  List<String> categories,  double? rating,  int? priceLevel,  List<String>? openingHours,  String? address,  String? crowdHint,  List<String> sources)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String? time,  String? reason, @JsonKey(name: 'place_id')  String? placeId,  TripCoords? coords,  List<String> categories,  double? rating, @JsonKey(name: 'map_url')  String? mapUrl, @JsonKey(name: 'price_level')  int? priceLevel, @JsonKey(name: 'opening_hours')  List<String>? openingHours,  String? address, @JsonKey(name: 'crowd_hint')  String? crowdHint,  List<String> sources)  $default,) {final _that = this;
 switch (_that) {
 case _TripBlock():
-return $default(_that.title,_that.time,_that.reason,_that.placeId,_that.coords,_that.categories,_that.rating,_that.priceLevel,_that.openingHours,_that.address,_that.crowdHint,_that.sources);case _:
+return $default(_that.title,_that.time,_that.reason,_that.placeId,_that.coords,_that.categories,_that.rating,_that.mapUrl,_that.priceLevel,_that.openingHours,_that.address,_that.crowdHint,_that.sources);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -801,10 +793,10 @@ return $default(_that.title,_that.time,_that.reason,_that.placeId,_that.coords,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String? time,  String? reason,  String? placeId,  TripCoords? coords,  List<String> categories,  double? rating,  int? priceLevel,  List<String>? openingHours,  String? address,  String? crowdHint,  List<String> sources)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String? time,  String? reason, @JsonKey(name: 'place_id')  String? placeId,  TripCoords? coords,  List<String> categories,  double? rating, @JsonKey(name: 'map_url')  String? mapUrl, @JsonKey(name: 'price_level')  int? priceLevel, @JsonKey(name: 'opening_hours')  List<String>? openingHours,  String? address, @JsonKey(name: 'crowd_hint')  String? crowdHint,  List<String> sources)?  $default,) {final _that = this;
 switch (_that) {
 case _TripBlock() when $default != null:
-return $default(_that.title,_that.time,_that.reason,_that.placeId,_that.coords,_that.categories,_that.rating,_that.priceLevel,_that.openingHours,_that.address,_that.crowdHint,_that.sources);case _:
+return $default(_that.title,_that.time,_that.reason,_that.placeId,_that.coords,_that.categories,_that.rating,_that.mapUrl,_that.priceLevel,_that.openingHours,_that.address,_that.crowdHint,_that.sources);case _:
   return null;
 
 }
@@ -816,13 +808,13 @@ return $default(_that.title,_that.time,_that.reason,_that.placeId,_that.coords,_
 @JsonSerializable()
 
 class _TripBlock implements TripBlock {
-  const _TripBlock({this.title = '', this.time, this.reason, this.placeId, this.coords, final  List<String> categories = const [], this.rating, this.priceLevel, final  List<String>? openingHours, this.address, this.crowdHint, final  List<String> sources = const []}): _categories = categories,_openingHours = openingHours,_sources = sources;
+  const _TripBlock({this.title = '', this.time, this.reason, @JsonKey(name: 'place_id') this.placeId, this.coords, final  List<String> categories = const [], this.rating, @JsonKey(name: 'map_url') this.mapUrl, @JsonKey(name: 'price_level') this.priceLevel, @JsonKey(name: 'opening_hours') final  List<String>? openingHours, this.address, @JsonKey(name: 'crowd_hint') this.crowdHint, final  List<String> sources = const []}): _categories = categories,_openingHours = openingHours,_sources = sources;
   factory _TripBlock.fromJson(Map<String, dynamic> json) => _$TripBlockFromJson(json);
 
 @override@JsonKey() final  String title;
 @override final  String? time;
 @override final  String? reason;
-@override final  String? placeId;
+@override@JsonKey(name: 'place_id') final  String? placeId;
 @override final  TripCoords? coords;
  final  List<String> _categories;
 @override@JsonKey() List<String> get categories {
@@ -832,9 +824,11 @@ class _TripBlock implements TripBlock {
 }
 
 @override final  double? rating;
-@override final  int? priceLevel;
+@override@JsonKey(name: 'map_url') final  String? mapUrl;
+// ✅ Added mapUrl
+@override@JsonKey(name: 'price_level') final  int? priceLevel;
  final  List<String>? _openingHours;
-@override List<String>? get openingHours {
+@override@JsonKey(name: 'opening_hours') List<String>? get openingHours {
   final value = _openingHours;
   if (value == null) return null;
   if (_openingHours is EqualUnmodifiableListView) return _openingHours;
@@ -843,7 +837,7 @@ class _TripBlock implements TripBlock {
 }
 
 @override final  String? address;
-@override final  String? crowdHint;
+@override@JsonKey(name: 'crowd_hint') final  String? crowdHint;
  final  List<String> _sources;
 @override@JsonKey() List<String> get sources {
   if (_sources is EqualUnmodifiableListView) return _sources;
@@ -865,16 +859,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TripBlock&&(identical(other.title, title) || other.title == title)&&(identical(other.time, time) || other.time == time)&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.placeId, placeId) || other.placeId == placeId)&&(identical(other.coords, coords) || other.coords == coords)&&const DeepCollectionEquality().equals(other._categories, _categories)&&(identical(other.rating, rating) || other.rating == rating)&&(identical(other.priceLevel, priceLevel) || other.priceLevel == priceLevel)&&const DeepCollectionEquality().equals(other._openingHours, _openingHours)&&(identical(other.address, address) || other.address == address)&&(identical(other.crowdHint, crowdHint) || other.crowdHint == crowdHint)&&const DeepCollectionEquality().equals(other._sources, _sources));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TripBlock&&(identical(other.title, title) || other.title == title)&&(identical(other.time, time) || other.time == time)&&(identical(other.reason, reason) || other.reason == reason)&&(identical(other.placeId, placeId) || other.placeId == placeId)&&(identical(other.coords, coords) || other.coords == coords)&&const DeepCollectionEquality().equals(other._categories, _categories)&&(identical(other.rating, rating) || other.rating == rating)&&(identical(other.mapUrl, mapUrl) || other.mapUrl == mapUrl)&&(identical(other.priceLevel, priceLevel) || other.priceLevel == priceLevel)&&const DeepCollectionEquality().equals(other._openingHours, _openingHours)&&(identical(other.address, address) || other.address == address)&&(identical(other.crowdHint, crowdHint) || other.crowdHint == crowdHint)&&const DeepCollectionEquality().equals(other._sources, _sources));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,time,reason,placeId,coords,const DeepCollectionEquality().hash(_categories),rating,priceLevel,const DeepCollectionEquality().hash(_openingHours),address,crowdHint,const DeepCollectionEquality().hash(_sources));
+int get hashCode => Object.hash(runtimeType,title,time,reason,placeId,coords,const DeepCollectionEquality().hash(_categories),rating,mapUrl,priceLevel,const DeepCollectionEquality().hash(_openingHours),address,crowdHint,const DeepCollectionEquality().hash(_sources));
 
 @override
 String toString() {
-  return 'TripBlock(title: $title, time: $time, reason: $reason, placeId: $placeId, coords: $coords, categories: $categories, rating: $rating, priceLevel: $priceLevel, openingHours: $openingHours, address: $address, crowdHint: $crowdHint, sources: $sources)';
+  return 'TripBlock(title: $title, time: $time, reason: $reason, placeId: $placeId, coords: $coords, categories: $categories, rating: $rating, mapUrl: $mapUrl, priceLevel: $priceLevel, openingHours: $openingHours, address: $address, crowdHint: $crowdHint, sources: $sources)';
 }
 
 
@@ -885,7 +879,7 @@ abstract mixin class _$TripBlockCopyWith<$Res> implements $TripBlockCopyWith<$Re
   factory _$TripBlockCopyWith(_TripBlock value, $Res Function(_TripBlock) _then) = __$TripBlockCopyWithImpl;
 @override @useResult
 $Res call({
- String title, String? time, String? reason, String? placeId, TripCoords? coords, List<String> categories, double? rating, int? priceLevel, List<String>? openingHours, String? address, String? crowdHint, List<String> sources
+ String title, String? time, String? reason,@JsonKey(name: 'place_id') String? placeId, TripCoords? coords, List<String> categories, double? rating,@JsonKey(name: 'map_url') String? mapUrl,@JsonKey(name: 'price_level') int? priceLevel,@JsonKey(name: 'opening_hours') List<String>? openingHours, String? address,@JsonKey(name: 'crowd_hint') String? crowdHint, List<String> sources
 });
 
 
@@ -902,7 +896,7 @@ class __$TripBlockCopyWithImpl<$Res>
 
 /// Create a copy of TripBlock
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? time = freezed,Object? reason = freezed,Object? placeId = freezed,Object? coords = freezed,Object? categories = null,Object? rating = freezed,Object? priceLevel = freezed,Object? openingHours = freezed,Object? address = freezed,Object? crowdHint = freezed,Object? sources = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? time = freezed,Object? reason = freezed,Object? placeId = freezed,Object? coords = freezed,Object? categories = null,Object? rating = freezed,Object? mapUrl = freezed,Object? priceLevel = freezed,Object? openingHours = freezed,Object? address = freezed,Object? crowdHint = freezed,Object? sources = null,}) {
   return _then(_TripBlock(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,time: freezed == time ? _self.time : time // ignore: cast_nullable_to_non_nullable
@@ -911,7 +905,8 @@ as String?,placeId: freezed == placeId ? _self.placeId : placeId // ignore: cast
 as String?,coords: freezed == coords ? _self.coords : coords // ignore: cast_nullable_to_non_nullable
 as TripCoords?,categories: null == categories ? _self._categories : categories // ignore: cast_nullable_to_non_nullable
 as List<String>,rating: freezed == rating ? _self.rating : rating // ignore: cast_nullable_to_non_nullable
-as double?,priceLevel: freezed == priceLevel ? _self.priceLevel : priceLevel // ignore: cast_nullable_to_non_nullable
+as double?,mapUrl: freezed == mapUrl ? _self.mapUrl : mapUrl // ignore: cast_nullable_to_non_nullable
+as String?,priceLevel: freezed == priceLevel ? _self.priceLevel : priceLevel // ignore: cast_nullable_to_non_nullable
 as int?,openingHours: freezed == openingHours ? _self._openingHours : openingHours // ignore: cast_nullable_to_non_nullable
 as List<String>?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
 as String?,crowdHint: freezed == crowdHint ? _self.crowdHint : crowdHint // ignore: cast_nullable_to_non_nullable

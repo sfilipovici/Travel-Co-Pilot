@@ -21,25 +21,34 @@ class DaySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final dayColor =
+        Colors.primaries[(dayNumber - 1) % Colors.primaries.length];
 
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       elevation: 3,
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(16),
-        onTap: onToggle,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              Row(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: Column(
+        children: [
+          InkWell(
+            borderRadius: BorderRadius.circular(20),
+            onTap: onToggle,
+            child: Container(
+              decoration: BoxDecoration(
+                color: dayColor.withOpacity(0.1),
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+              child: Row(
                 children: [
                   Expanded(
                     child: Text(
-                      'Day $dayNumber',
+                      "Day $dayNumber",
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
+                        color: dayColor.shade700,
                       ),
                     ),
                   ),
@@ -47,40 +56,41 @@ class DaySection extends StatelessWidget {
                     isExpanded
                         ? Icons.keyboard_arrow_up_rounded
                         : Icons.keyboard_arrow_down_rounded,
+                    color: dayColor.shade700,
                   ),
                 ],
               ),
-              AnimatedCrossFade(
-                duration: const Duration(milliseconds: 300),
-                crossFadeState: isExpanded
-                    ? CrossFadeState.showFirst
-                    : CrossFadeState.showSecond,
-                firstChild: blocks.isEmpty
-                    ? const Padding(
-                        padding: EdgeInsets.all(16),
-                        child: Center(
-                          child: CircularProgressIndicator(strokeWidth: 2),
-                        ),
-                      )
-                    : ReorderableListView(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        onReorder: (int oldIndex, int newIndex) {
-                          onReorder?.call(oldIndex, newIndex);
-                        },
-                        children: [
-                          for (var i = 0; i < blocks.length; i++)
-                            ActivityCard(
-                              key: ValueKey('${dayNumber}_$i'),
-                              block: blocks[i],
-                            ),
-                        ],
-                      ),
-                secondChild: const SizedBox.shrink(),
-              ),
-            ],
+            ),
           ),
-        ),
+          AnimatedCrossFade(
+            duration: const Duration(milliseconds: 300),
+            crossFadeState: isExpanded
+                ? CrossFadeState.showFirst
+                : CrossFadeState.showSecond,
+            firstChild: blocks.isEmpty
+                ? const Padding(
+                    padding: EdgeInsets.all(24),
+                    child: Center(
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
+                  )
+                : ReorderableListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    onReorder: (oldIndex, newIndex) {
+                      onReorder?.call(oldIndex, newIndex);
+                    },
+                    children: [
+                      for (var i = 0; i < blocks.length; i++)
+                        ActivityCard(
+                          key: ValueKey('${dayNumber}_$i'),
+                          block: blocks[i],
+                        ),
+                    ],
+                  ),
+            secondChild: const SizedBox.shrink(),
+          ),
+        ],
       ),
     );
   }

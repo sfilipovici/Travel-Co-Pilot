@@ -30,17 +30,19 @@ class TripRepository {
   Future<Trip?> getActive() async {
     final userId = _requireUserId();
 
-    final response = await _client
-        .from('trips')
-        .select()
-        .eq('user_id', userId)
-        .eq('is_active', true)
-        .order('created_at', ascending: false)
-        .limit(1)
-        .maybeSingle();
+    final response =
+        await _client
+                .from('trips')
+                .select()
+                .eq('user_id', userId)
+                .eq('is_active', true)
+                .order('created_at', ascending: false)
+                .limit(1)
+                .maybeSingle()
+            as Map<String, dynamic>?;
 
     if (response == null) return null;
-    return Trip.fromJson(Map<String, dynamic>.from(response));
+    return Trip.fromJson(response);
   }
 
   /// Save or update a trip
@@ -48,20 +50,27 @@ class TripRepository {
     final userId = _requireUserId();
     final json = trip.toJson()..['user_id'] = userId;
 
-    await _client.from('trips').upsert(json).select();
+    final res = await _client.from('trips').upsert(json).select();
+    if (res == null) {
+      throw Exception('Failed to save trip');
+    }
   }
 
   /// Fetch all itineraries for current user
   Future<List<Trip>> getAll() async {
     final userId = _requireUserId();
 
-    final response = await _client
-        .from('trips')
-        .select()
-        .eq('user_id', userId)
-        .order('created_at', ascending: false);
+    final response =
+        await _client
+                .from('trips')
+                .select()
+                .eq('user_id', userId)
+                .order('created_at', ascending: false)
+            as List<dynamic>;
 
-    return (response as List)
+    if (response.isEmpty) return [];
+
+    return response
         .map((e) => Trip.fromJson(e as Map<String, dynamic>))
         .toList();
   }
@@ -84,13 +93,23 @@ class TripRepository {
         .eq('user_id', userId);
   }
 
+  /// Deactivate all trips
+  Future<void> deactivateTrip() async {
+    final userId = _requireUserId();
+
+    await _client
+        .from('trips')
+        .update({'is_active': false})
+        .eq('user_id', userId);
+  }
+
   /// Delete a trip
   Future<void> delete(String tripId) async {
     final userId = _requireUserId();
     await _client.from('trips').delete().eq('id', tripId).eq('user_id', userId);
   }
 
-  /// Replace block logic
+  /// Replace block logic (calls RPC function)
   Future<TripBlock> replaceBlock(TripBlock block, String choice) async {
     try {
       final res = await _client.rpc<Map<String, dynamic>>(
@@ -100,12 +119,11 @@ class TripRepository {
       return TripBlock.fromJson(res);
     } catch (_) {
       // fallback
+      return block.copyWith(
+        title: '${block.title} ($choice)',
+        reason: '${block.reason ?? ''} — replacement: $choice',
+      );
     }
-
-    return block.copyWith(
-      title: '${block.title} ($choice)',
-      reason: '${block.reason ?? ''} — replacement: $choice',
-    );
   }
 
   /// Generate trip (fallback implementation if backend fails)
@@ -123,28 +141,33 @@ class TripRepository {
     if (prefs is Map<String, dynamic>) {
       return Trip(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
+        userId: prefs['userId']?.toString() ?? 'unknown-user',
         city: prefs['city']?.toString() ?? 'Unknown',
-        startDate: (prefs['startDate'] is DateTime)
+        startDate: prefs['startDate'] is DateTime
             ? prefs['startDate'] as DateTime
             : DateTime.now(),
-        days: [],
-        summaryTips: const [],
-        budgetAmount: (prefs['budgetLevel'] as int?) ?? 2,
+        endDate: prefs['endDate'] is DateTime
+            ? prefs['endDate'] as DateTime
+            : DateTime.now().add(const Duration(days: 3)),
+        days: const [],
+        budgetAmount: prefs['budgetAmount'] as int?,
         categories:
             (prefs['interests'] as List<dynamic>?)
                 ?.map((e) => e.toString())
                 .toList() ??
             const [],
+        currency: prefs['currency']?.toString(),
       );
     }
 
+    // ensure we always return something
     return Trip(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
+      userId: 'unknown-user',
       city: 'Unknown',
       startDate: DateTime.now(),
-      days: [],
-      summaryTips: const [],
-      budgetAmount: 2,
+      endDate: DateTime.now().add(const Duration(days: 3)),
+      days: const [],
       categories: const [],
     );
   }

@@ -50,7 +50,7 @@ class PlanController extends StateNotifier<AsyncValue<void>> {
           'userId': user.id,
           'city': city,
           'startDate': startDate.toIso8601String(),
-          'endDate': endDate.toIso8601String(),
+          'endDate': endDate.toIso8601String(), // ✅ already in your code
           'days': days,
           'budgetAmount': budgetAmount,
           'currency': currency,
@@ -78,6 +78,17 @@ class PlanController extends StateNotifier<AsyncValue<void>> {
     try {
       // ✅ Repo now ensures only one trip is active
       await _repo.activateTrip(id);
+      state = const AsyncData(null);
+    } catch (e, st) {
+      state = AsyncError(e, st);
+      rethrow;
+    }
+  }
+
+  Future<void> deactivateTrip() async {
+    state = const AsyncLoading();
+    try {
+      await _repo.deactivateTrip();
       state = const AsyncData(null);
     } catch (e, st) {
       state = AsyncError(e, st);

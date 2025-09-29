@@ -8,19 +8,22 @@ final poiRepositoryProvider = Provider<PoiRepository>((ref) {
 });
 
 /// Fetch POIs for a trip
-final poiListProvider = FutureProvider.family<List<POI>, Map<String, dynamic>>(
-  (ref, args) async {
-    final repo = ref.watch(poiRepositoryProvider);
-    final city = args['city'] as String;
-    final days = args['days'] as int;
-    final startDate = args['startDate'] as DateTime;
-    return repo.fetchTripPOIs(city: city, days: days, startDate: startDate);
-  },
-);
+final poiListProvider = FutureProvider.family<List<POI>, Map<String, dynamic>>((
+  ref,
+  args,
+) async {
+  final repo = ref.watch(poiRepositoryProvider);
+  final city = args['city'] as String;
+  final days = args['days'] as int;
+  final startDate = args['startDate'] as DateTime;
+  return repo.fetchTripPOIs(city: city, days: days, startDate: startDate);
+});
 
 /// Find POI by ID from a cached list
-final poiByIdProvider =
-    Provider.family<POI?, Map<String, dynamic>>((ref, args) {
+final poiByIdProvider = Provider.family<POI?, Map<String, dynamic>>((
+  ref,
+  args,
+) {
   final pois = args['pois'] as List<POI>;
   final placeId = args['placeId'] as String;
   final repo = ref.watch(poiRepositoryProvider);
