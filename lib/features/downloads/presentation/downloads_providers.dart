@@ -41,8 +41,9 @@ class DownloadsController extends StateNotifier<List<DownloadEntry>> {
   }) {
     final existing = state.where((e) => e.id == id).toList();
     if (existing.isNotEmpty &&
-        existing.first.status == DownloadStatus.completed)
+        existing.first.status == DownloadStatus.completed) {
       return;
+    }
 
     // add/update entry
     final updated = [
@@ -57,7 +58,6 @@ class DownloadsController extends StateNotifier<List<DownloadEntry>> {
           name: name,
           sizeMB: sizeMB,
           status: DownloadStatus.downloading,
-          progress: 0,
         ),
     ];
     state = updated;
@@ -66,7 +66,7 @@ class DownloadsController extends StateNotifier<List<DownloadEntry>> {
     _timer?.cancel();
     _timer = Timer.periodic(const Duration(milliseconds: 250), (t) {
       final entries = state.toList();
-      bool allDone = true;
+      var allDone = true;
       for (var i = 0; i < entries.length; i++) {
         final e = entries[i];
         if (e.status == DownloadStatus.downloading) {
@@ -103,5 +103,5 @@ class DownloadsController extends StateNotifier<List<DownloadEntry>> {
 
 final downloadsControllerProvider =
     StateNotifierProvider<DownloadsController, List<DownloadEntry>>((ref) {
-      return DownloadsController();
-    });
+  return DownloadsController();
+});

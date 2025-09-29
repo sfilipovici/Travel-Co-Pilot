@@ -20,10 +20,12 @@ class SettingsPage extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.language),
             title: const Text('Language'),
-            subtitle: Text(switch (s.languageCode) {
-              'ro' => 'Română',
-              _ => 'English',
-            }),
+            subtitle: Text(
+              switch (s.languageCode) {
+                'ro' => 'Română',
+                _ => 'English',
+              },
+            ),
             trailing: DropdownButton<String>(
               value: s.languageCode,
               onChanged: (v) => v == null ? null : c.setLanguage(v),
@@ -42,7 +44,6 @@ class SettingsPage extends ConsumerWidget {
             ),
             secondary: const Icon(Icons.straighten),
           ),
-
           _SectionHeader('Notifications', cs),
           SwitchListTile(
             value: s.pushEnabled,
@@ -58,7 +59,6 @@ class SettingsPage extends ConsumerWidget {
             subtitle: const Text('Contextual toasts & dialogs'),
             secondary: const Icon(Icons.info_outline),
           ),
-
           _SectionHeader('Privacy', cs),
           SwitchListTile(
             value: s.shareAnonCrowdData,
@@ -67,7 +67,6 @@ class SettingsPage extends ConsumerWidget {
             subtitle: const Text('Helps improve live re-planning'),
             secondary: const Icon(Icons.shield_outlined),
           ),
-
           const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -99,9 +98,9 @@ class _SectionHeader extends StatelessWidget {
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleMedium?.copyWith(
-          color: cs.primary,
-          fontWeight: FontWeight.w600,
-        ),
+              color: cs.primary,
+              fontWeight: FontWeight.w600,
+            ),
       ),
     );
   }

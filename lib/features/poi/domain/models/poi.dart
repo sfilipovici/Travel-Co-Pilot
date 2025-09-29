@@ -1,35 +1,83 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:travel_copilot/core/models/geo.dart';
+import 'package:equatable/equatable.dart';
 
-part 'poi.freezed.dart';
-part 'poi.g.dart';
+class POI extends Equatable {
+  const POI({
+    required this.placeId,
+    required this.name,
+    required this.lat,
+    required this.lng,
+    required this.categories,
+    required this.timeOfDay,
+    required this.reason,
+    required this.budgetHint,
+    required this.crowdHint,
+    required this.sources,
+    this.rating,
+    this.priceLevel,
+    this.openingHours,
+    this.address,
+  });
 
-@freezed
-class POI with _$POI {
-  const factory POI({
-    required String poiId,
-    required String name,
-    required String category,
-    required int priceLevel,
-    required LatLng coords,
-    @Default(0.0) double rating,
-    @Default('') String address,
-    @Default(<OpeningHour>[]) List<OpeningHour> openingHours,
-    @Default(<String>[]) List<String> images,
-    @Default(<String>[]) List<String> sourceRefs,
-  }) = _POI;
+  factory POI.fromJson(Map<String, dynamic> json) {
+    final coords = json['coords'] as Map<String, dynamic>?;
 
-  factory POI.fromJson(Map<String, dynamic> json) => _$POIFromJson(json);
-}
+    return POI(
+      placeId: json['place_id']?.toString() ?? '',
+      name: json['name']?.toString() ?? json['title']?.toString() ?? 'Unknown',
+      lat: (coords?['lat'] as num?)?.toDouble() ?? 0.0,
+      lng: (coords?['lng'] as num?)?.toDouble() ?? 0.0,
+      categories:
+          (json['categories'] as List<dynamic>?)
+              ?.map((e) => e.toString())
+              .toList() ??
+          const [],
+      rating: (json['rating'] as num?)?.toDouble(),
+      priceLevel: (json['price_level'] as num?)?.toInt(),
+      openingHours: (json['opening_hours'] as List<dynamic>?)
+          ?.map((e) => e.toString())
+          .toList(),
+      address: json['address']?.toString(),
+      timeOfDay: json['time']?.toString() ?? '',
+      reason: json['reason']?.toString() ?? '',
+      budgetHint: json['budget_hint']?.toString() ?? '',
+      crowdHint: json['crowd_hint']?.toString() ?? '',
+      sources:
+          (json['sources'] as List<dynamic>?)
+              ?.map((e) => e.toString())
+              .toList() ??
+          const [],
+    );
+  }
+  final String placeId;
+  final String name;
+  final double lat;
+  final double lng;
+  final List<String> categories;
+  final double? rating;
+  final int? priceLevel;
+  final List<String>? openingHours;
+  final String? address;
+  final String timeOfDay;
+  final String reason;
+  final String budgetHint;
+  final String crowdHint;
+  final List<String> sources;
 
-@freezed
-class OpeningHour with _$OpeningHour {
-  const factory OpeningHour({
-    required int weekday, // 1=Mon..7=Sun
-    required String open, // "09:00"
-    required String close, // "18:00"
-  }) = _OpeningHour;
-
-  factory OpeningHour.fromJson(Map<String, dynamic> json) =>
-      _$OpeningHourFromJson(json);
+  @override
+  List<Object?> get props => [
+    placeId,
+    name,
+    lat,
+    lng,
+    categories,
+    rating,
+    priceLevel,
+    openingHours,
+    address,
+    timeOfDay,
+    reason,
+    budgetHint,
+    crowdHint,
+    sources,
+  ];
 }

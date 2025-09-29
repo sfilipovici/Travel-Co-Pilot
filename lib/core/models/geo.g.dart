@@ -6,13 +6,12 @@ part of 'geo.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LatLngImpl _$$LatLngImplFromJson(Map<String, dynamic> json) => _$LatLngImpl(
-      lat: (json['lat'] as num).toDouble(),
-      lng: (json['lng'] as num).toDouble(),
-    );
+_LatLng _$LatLngFromJson(Map<String, dynamic> json) => _LatLng(
+  lat: (json['lat'] as num).toDouble(),
+  lng: (json['lng'] as num).toDouble(),
+);
 
-Map<String, dynamic> _$$LatLngImplToJson(_$LatLngImpl instance) =>
-    <String, dynamic>{
-      'lat': instance.lat,
-      'lng': instance.lng,
-    };
+Map<String, dynamic> _$LatLngToJson(_LatLng instance) => <String, dynamic>{
+  'lat': instance.lat,
+  'lng': instance.lng,
+};

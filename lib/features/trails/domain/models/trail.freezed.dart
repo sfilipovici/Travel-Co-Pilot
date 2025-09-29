@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,451 +9,574 @@ part of 'trail.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Trail _$TrailFromJson(Map<String, dynamic> json) {
-  return _Trail.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Trail {
-  String get trailId => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  List<TrailCheckpoint> get checkpoints => throw _privateConstructorUsedError;
-  String get bundleUrl => throw _privateConstructorUsedError;
-  int get sizeMB => throw _privateConstructorUsedError;
+
+ String get trailId; String get name; List<TrailCheckpoint> get checkpoints; String get bundleUrl; int get sizeMB;
+/// Create a copy of Trail
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TrailCopyWith<Trail> get copyWith => _$TrailCopyWithImpl<Trail>(this as Trail, _$identity);
 
   /// Serializes this Trail to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Trail
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $TrailCopyWith<Trail> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Trail&&(identical(other.trailId, trailId) || other.trailId == trailId)&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.checkpoints, checkpoints)&&(identical(other.bundleUrl, bundleUrl) || other.bundleUrl == bundleUrl)&&(identical(other.sizeMB, sizeMB) || other.sizeMB == sizeMB));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,trailId,name,const DeepCollectionEquality().hash(checkpoints),bundleUrl,sizeMB);
+
+@override
+String toString() {
+  return 'Trail(trailId: $trailId, name: $name, checkpoints: $checkpoints, bundleUrl: $bundleUrl, sizeMB: $sizeMB)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $TrailCopyWith<$Res> {
-  factory $TrailCopyWith(Trail value, $Res Function(Trail) then) =
-      _$TrailCopyWithImpl<$Res, Trail>;
-  @useResult
-  $Res call(
-      {String trailId,
-      String name,
-      List<TrailCheckpoint> checkpoints,
-      String bundleUrl,
-      int sizeMB});
-}
+abstract mixin class $TrailCopyWith<$Res>  {
+  factory $TrailCopyWith(Trail value, $Res Function(Trail) _then) = _$TrailCopyWithImpl;
+@useResult
+$Res call({
+ String trailId, String name, List<TrailCheckpoint> checkpoints, String bundleUrl, int sizeMB
+});
 
+
+
+
+}
 /// @nodoc
-class _$TrailCopyWithImpl<$Res, $Val extends Trail>
+class _$TrailCopyWithImpl<$Res>
     implements $TrailCopyWith<$Res> {
-  _$TrailCopyWithImpl(this._value, this._then);
+  _$TrailCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Trail _self;
+  final $Res Function(Trail) _then;
 
-  /// Create a copy of Trail
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? trailId = null,
-    Object? name = null,
-    Object? checkpoints = null,
-    Object? bundleUrl = null,
-    Object? sizeMB = null,
-  }) {
-    return _then(_value.copyWith(
-      trailId: null == trailId
-          ? _value.trailId
-          : trailId // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      checkpoints: null == checkpoints
-          ? _value.checkpoints
-          : checkpoints // ignore: cast_nullable_to_non_nullable
-              as List<TrailCheckpoint>,
-      bundleUrl: null == bundleUrl
-          ? _value.bundleUrl
-          : bundleUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      sizeMB: null == sizeMB
-          ? _value.sizeMB
-          : sizeMB // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
+/// Create a copy of Trail
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? trailId = null,Object? name = null,Object? checkpoints = null,Object? bundleUrl = null,Object? sizeMB = null,}) {
+  return _then(_self.copyWith(
+trailId: null == trailId ? _self.trailId : trailId // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,checkpoints: null == checkpoints ? _self.checkpoints : checkpoints // ignore: cast_nullable_to_non_nullable
+as List<TrailCheckpoint>,bundleUrl: null == bundleUrl ? _self.bundleUrl : bundleUrl // ignore: cast_nullable_to_non_nullable
+as String,sizeMB: null == sizeMB ? _self.sizeMB : sizeMB // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-abstract class _$$TrailImplCopyWith<$Res> implements $TrailCopyWith<$Res> {
-  factory _$$TrailImplCopyWith(
-          _$TrailImpl value, $Res Function(_$TrailImpl) then) =
-      __$$TrailImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String trailId,
-      String name,
-      List<TrailCheckpoint> checkpoints,
-      String bundleUrl,
-      int sizeMB});
 }
 
-/// @nodoc
-class __$$TrailImplCopyWithImpl<$Res>
-    extends _$TrailCopyWithImpl<$Res, _$TrailImpl>
-    implements _$$TrailImplCopyWith<$Res> {
-  __$$TrailImplCopyWithImpl(
-      _$TrailImpl _value, $Res Function(_$TrailImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of Trail
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? trailId = null,
-    Object? name = null,
-    Object? checkpoints = null,
-    Object? bundleUrl = null,
-    Object? sizeMB = null,
-  }) {
-    return _then(_$TrailImpl(
-      trailId: null == trailId
-          ? _value.trailId
-          : trailId // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      checkpoints: null == checkpoints
-          ? _value._checkpoints
-          : checkpoints // ignore: cast_nullable_to_non_nullable
-              as List<TrailCheckpoint>,
-      bundleUrl: null == bundleUrl
-          ? _value.bundleUrl
-          : bundleUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      sizeMB: null == sizeMB
-          ? _value.sizeMB
-          : sizeMB // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Trail].
+extension TrailPatterns on Trail {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Trail value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Trail() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Trail value)  $default,){
+final _that = this;
+switch (_that) {
+case _Trail():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Trail value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Trail() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String trailId,  String name,  List<TrailCheckpoint> checkpoints,  String bundleUrl,  int sizeMB)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Trail() when $default != null:
+return $default(_that.trailId,_that.name,_that.checkpoints,_that.bundleUrl,_that.sizeMB);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String trailId,  String name,  List<TrailCheckpoint> checkpoints,  String bundleUrl,  int sizeMB)  $default,) {final _that = this;
+switch (_that) {
+case _Trail():
+return $default(_that.trailId,_that.name,_that.checkpoints,_that.bundleUrl,_that.sizeMB);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String trailId,  String name,  List<TrailCheckpoint> checkpoints,  String bundleUrl,  int sizeMB)?  $default,) {final _that = this;
+switch (_that) {
+case _Trail() when $default != null:
+return $default(_that.trailId,_that.name,_that.checkpoints,_that.bundleUrl,_that.sizeMB);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$TrailImpl implements _Trail {
-  const _$TrailImpl(
-      {required this.trailId,
-      required this.name,
-      final List<TrailCheckpoint> checkpoints = const <TrailCheckpoint>[],
-      this.bundleUrl = '',
-      this.sizeMB = 0})
-      : _checkpoints = checkpoints;
 
-  factory _$TrailImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TrailImplFromJson(json);
+class _Trail implements Trail {
+  const _Trail({required this.trailId, required this.name, final  List<TrailCheckpoint> checkpoints = const <TrailCheckpoint>[], this.bundleUrl = '', this.sizeMB = 0}): _checkpoints = checkpoints;
+  factory _Trail.fromJson(Map<String, dynamic> json) => _$TrailFromJson(json);
 
-  @override
-  final String trailId;
-  @override
-  final String name;
-  final List<TrailCheckpoint> _checkpoints;
-  @override
-  @JsonKey()
-  List<TrailCheckpoint> get checkpoints {
-    if (_checkpoints is EqualUnmodifiableListView) return _checkpoints;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_checkpoints);
-  }
-
-  @override
-  @JsonKey()
-  final String bundleUrl;
-  @override
-  @JsonKey()
-  final int sizeMB;
-
-  @override
-  String toString() {
-    return 'Trail(trailId: $trailId, name: $name, checkpoints: $checkpoints, bundleUrl: $bundleUrl, sizeMB: $sizeMB)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TrailImpl &&
-            (identical(other.trailId, trailId) || other.trailId == trailId) &&
-            (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality()
-                .equals(other._checkpoints, _checkpoints) &&
-            (identical(other.bundleUrl, bundleUrl) ||
-                other.bundleUrl == bundleUrl) &&
-            (identical(other.sizeMB, sizeMB) || other.sizeMB == sizeMB));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, trailId, name,
-      const DeepCollectionEquality().hash(_checkpoints), bundleUrl, sizeMB);
-
-  /// Create a copy of Trail
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TrailImplCopyWith<_$TrailImpl> get copyWith =>
-      __$$TrailImplCopyWithImpl<_$TrailImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TrailImplToJson(
-      this,
-    );
-  }
+@override final  String trailId;
+@override final  String name;
+ final  List<TrailCheckpoint> _checkpoints;
+@override@JsonKey() List<TrailCheckpoint> get checkpoints {
+  if (_checkpoints is EqualUnmodifiableListView) return _checkpoints;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_checkpoints);
 }
 
-abstract class _Trail implements Trail {
-  const factory _Trail(
-      {required final String trailId,
-      required final String name,
-      final List<TrailCheckpoint> checkpoints,
-      final String bundleUrl,
-      final int sizeMB}) = _$TrailImpl;
+@override@JsonKey() final  String bundleUrl;
+@override@JsonKey() final  int sizeMB;
 
-  factory _Trail.fromJson(Map<String, dynamic> json) = _$TrailImpl.fromJson;
+/// Create a copy of Trail
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$TrailCopyWith<_Trail> get copyWith => __$TrailCopyWithImpl<_Trail>(this, _$identity);
 
-  @override
-  String get trailId;
-  @override
-  String get name;
-  @override
-  List<TrailCheckpoint> get checkpoints;
-  @override
-  String get bundleUrl;
-  @override
-  int get sizeMB;
-
-  /// Create a copy of Trail
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TrailImplCopyWith<_$TrailImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$TrailToJson(this, );
 }
 
-TrailCheckpoint _$TrailCheckpointFromJson(Map<String, dynamic> json) {
-  return _TrailCheckpoint.fromJson(json);
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Trail&&(identical(other.trailId, trailId) || other.trailId == trailId)&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other._checkpoints, _checkpoints)&&(identical(other.bundleUrl, bundleUrl) || other.bundleUrl == bundleUrl)&&(identical(other.sizeMB, sizeMB) || other.sizeMB == sizeMB));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,trailId,name,const DeepCollectionEquality().hash(_checkpoints),bundleUrl,sizeMB);
+
+@override
+String toString() {
+  return 'Trail(trailId: $trailId, name: $name, checkpoints: $checkpoints, bundleUrl: $bundleUrl, sizeMB: $sizeMB)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$TrailCopyWith<$Res> implements $TrailCopyWith<$Res> {
+  factory _$TrailCopyWith(_Trail value, $Res Function(_Trail) _then) = __$TrailCopyWithImpl;
+@override @useResult
+$Res call({
+ String trailId, String name, List<TrailCheckpoint> checkpoints, String bundleUrl, int sizeMB
+});
+
+
+
+
+}
+/// @nodoc
+class __$TrailCopyWithImpl<$Res>
+    implements _$TrailCopyWith<$Res> {
+  __$TrailCopyWithImpl(this._self, this._then);
+
+  final _Trail _self;
+  final $Res Function(_Trail) _then;
+
+/// Create a copy of Trail
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? trailId = null,Object? name = null,Object? checkpoints = null,Object? bundleUrl = null,Object? sizeMB = null,}) {
+  return _then(_Trail(
+trailId: null == trailId ? _self.trailId : trailId // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,checkpoints: null == checkpoints ? _self._checkpoints : checkpoints // ignore: cast_nullable_to_non_nullable
+as List<TrailCheckpoint>,bundleUrl: null == bundleUrl ? _self.bundleUrl : bundleUrl // ignore: cast_nullable_to_non_nullable
+as String,sizeMB: null == sizeMB ? _self.sizeMB : sizeMB // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$TrailCheckpoint {
-  String get title => throw _privateConstructorUsedError;
-  LatLng get coords => throw _privateConstructorUsedError;
-  String get hint => throw _privateConstructorUsedError;
+
+ String get title; LatLng get coords; String get hint;
+/// Create a copy of TrailCheckpoint
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TrailCheckpointCopyWith<TrailCheckpoint> get copyWith => _$TrailCheckpointCopyWithImpl<TrailCheckpoint>(this as TrailCheckpoint, _$identity);
 
   /// Serializes this TrailCheckpoint to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of TrailCheckpoint
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $TrailCheckpointCopyWith<TrailCheckpoint> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TrailCheckpoint&&(identical(other.title, title) || other.title == title)&&(identical(other.coords, coords) || other.coords == coords)&&(identical(other.hint, hint) || other.hint == hint));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,title,coords,hint);
+
+@override
+String toString() {
+  return 'TrailCheckpoint(title: $title, coords: $coords, hint: $hint)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $TrailCheckpointCopyWith<$Res> {
-  factory $TrailCheckpointCopyWith(
-          TrailCheckpoint value, $Res Function(TrailCheckpoint) then) =
-      _$TrailCheckpointCopyWithImpl<$Res, TrailCheckpoint>;
-  @useResult
-  $Res call({String title, LatLng coords, String hint});
+abstract mixin class $TrailCheckpointCopyWith<$Res>  {
+  factory $TrailCheckpointCopyWith(TrailCheckpoint value, $Res Function(TrailCheckpoint) _then) = _$TrailCheckpointCopyWithImpl;
+@useResult
+$Res call({
+ String title, LatLng coords, String hint
+});
 
-  $LatLngCopyWith<$Res> get coords;
+
+$LatLngCopyWith<$Res> get coords;
+
 }
-
 /// @nodoc
-class _$TrailCheckpointCopyWithImpl<$Res, $Val extends TrailCheckpoint>
+class _$TrailCheckpointCopyWithImpl<$Res>
     implements $TrailCheckpointCopyWith<$Res> {
-  _$TrailCheckpointCopyWithImpl(this._value, this._then);
+  _$TrailCheckpointCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final TrailCheckpoint _self;
+  final $Res Function(TrailCheckpoint) _then;
 
-  /// Create a copy of TrailCheckpoint
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? title = null,
-    Object? coords = null,
-    Object? hint = null,
-  }) {
-    return _then(_value.copyWith(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      coords: null == coords
-          ? _value.coords
-          : coords // ignore: cast_nullable_to_non_nullable
-              as LatLng,
-      hint: null == hint
-          ? _value.hint
-          : hint // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-
-  /// Create a copy of TrailCheckpoint
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $LatLngCopyWith<$Res> get coords {
-    return $LatLngCopyWith<$Res>(_value.coords, (value) {
-      return _then(_value.copyWith(coords: value) as $Val);
-    });
-  }
+/// Create a copy of TrailCheckpoint
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? coords = null,Object? hint = null,}) {
+  return _then(_self.copyWith(
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,coords: null == coords ? _self.coords : coords // ignore: cast_nullable_to_non_nullable
+as LatLng,hint: null == hint ? _self.hint : hint // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+/// Create a copy of TrailCheckpoint
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LatLngCopyWith<$Res> get coords {
+  
+  return $LatLngCopyWith<$Res>(_self.coords, (value) {
+    return _then(_self.copyWith(coords: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$TrailCheckpointImplCopyWith<$Res>
-    implements $TrailCheckpointCopyWith<$Res> {
-  factory _$$TrailCheckpointImplCopyWith(_$TrailCheckpointImpl value,
-          $Res Function(_$TrailCheckpointImpl) then) =
-      __$$TrailCheckpointImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String title, LatLng coords, String hint});
 
-  @override
-  $LatLngCopyWith<$Res> get coords;
+/// Adds pattern-matching-related methods to [TrailCheckpoint].
+extension TrailCheckpointPatterns on TrailCheckpoint {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _TrailCheckpoint value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _TrailCheckpoint() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _TrailCheckpoint value)  $default,){
+final _that = this;
+switch (_that) {
+case _TrailCheckpoint():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _TrailCheckpoint value)?  $default,){
+final _that = this;
+switch (_that) {
+case _TrailCheckpoint() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  LatLng coords,  String hint)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _TrailCheckpoint() when $default != null:
+return $default(_that.title,_that.coords,_that.hint);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  LatLng coords,  String hint)  $default,) {final _that = this;
+switch (_that) {
+case _TrailCheckpoint():
+return $default(_that.title,_that.coords,_that.hint);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  LatLng coords,  String hint)?  $default,) {final _that = this;
+switch (_that) {
+case _TrailCheckpoint() when $default != null:
+return $default(_that.title,_that.coords,_that.hint);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$TrailCheckpointImplCopyWithImpl<$Res>
-    extends _$TrailCheckpointCopyWithImpl<$Res, _$TrailCheckpointImpl>
-    implements _$$TrailCheckpointImplCopyWith<$Res> {
-  __$$TrailCheckpointImplCopyWithImpl(
-      _$TrailCheckpointImpl _value, $Res Function(_$TrailCheckpointImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TrailCheckpoint
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? title = null,
-    Object? coords = null,
-    Object? hint = null,
-  }) {
-    return _then(_$TrailCheckpointImpl(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      coords: null == coords
-          ? _value.coords
-          : coords // ignore: cast_nullable_to_non_nullable
-              as LatLng,
-      hint: null == hint
-          ? _value.hint
-          : hint // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$TrailCheckpointImpl implements _TrailCheckpoint {
-  const _$TrailCheckpointImpl(
-      {required this.title, required this.coords, this.hint = ''});
 
-  factory _$TrailCheckpointImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TrailCheckpointImplFromJson(json);
+class _TrailCheckpoint implements TrailCheckpoint {
+  const _TrailCheckpoint({required this.title, required this.coords, this.hint = ''});
+  factory _TrailCheckpoint.fromJson(Map<String, dynamic> json) => _$TrailCheckpointFromJson(json);
 
-  @override
-  final String title;
-  @override
-  final LatLng coords;
-  @override
-  @JsonKey()
-  final String hint;
+@override final  String title;
+@override final  LatLng coords;
+@override@JsonKey() final  String hint;
 
-  @override
-  String toString() {
-    return 'TrailCheckpoint(title: $title, coords: $coords, hint: $hint)';
-  }
+/// Create a copy of TrailCheckpoint
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$TrailCheckpointCopyWith<_TrailCheckpoint> get copyWith => __$TrailCheckpointCopyWithImpl<_TrailCheckpoint>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TrailCheckpointImpl &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.coords, coords) || other.coords == coords) &&
-            (identical(other.hint, hint) || other.hint == hint));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, title, coords, hint);
-
-  /// Create a copy of TrailCheckpoint
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TrailCheckpointImplCopyWith<_$TrailCheckpointImpl> get copyWith =>
-      __$$TrailCheckpointImplCopyWithImpl<_$TrailCheckpointImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TrailCheckpointImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$TrailCheckpointToJson(this, );
 }
 
-abstract class _TrailCheckpoint implements TrailCheckpoint {
-  const factory _TrailCheckpoint(
-      {required final String title,
-      required final LatLng coords,
-      final String hint}) = _$TrailCheckpointImpl;
-
-  factory _TrailCheckpoint.fromJson(Map<String, dynamic> json) =
-      _$TrailCheckpointImpl.fromJson;
-
-  @override
-  String get title;
-  @override
-  LatLng get coords;
-  @override
-  String get hint;
-
-  /// Create a copy of TrailCheckpoint
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TrailCheckpointImplCopyWith<_$TrailCheckpointImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TrailCheckpoint&&(identical(other.title, title) || other.title == title)&&(identical(other.coords, coords) || other.coords == coords)&&(identical(other.hint, hint) || other.hint == hint));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,title,coords,hint);
+
+@override
+String toString() {
+  return 'TrailCheckpoint(title: $title, coords: $coords, hint: $hint)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$TrailCheckpointCopyWith<$Res> implements $TrailCheckpointCopyWith<$Res> {
+  factory _$TrailCheckpointCopyWith(_TrailCheckpoint value, $Res Function(_TrailCheckpoint) _then) = __$TrailCheckpointCopyWithImpl;
+@override @useResult
+$Res call({
+ String title, LatLng coords, String hint
+});
+
+
+@override $LatLngCopyWith<$Res> get coords;
+
+}
+/// @nodoc
+class __$TrailCheckpointCopyWithImpl<$Res>
+    implements _$TrailCheckpointCopyWith<$Res> {
+  __$TrailCheckpointCopyWithImpl(this._self, this._then);
+
+  final _TrailCheckpoint _self;
+  final $Res Function(_TrailCheckpoint) _then;
+
+/// Create a copy of TrailCheckpoint
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? coords = null,Object? hint = null,}) {
+  return _then(_TrailCheckpoint(
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,coords: null == coords ? _self.coords : coords // ignore: cast_nullable_to_non_nullable
+as LatLng,hint: null == hint ? _self.hint : hint // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+/// Create a copy of TrailCheckpoint
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$LatLngCopyWith<$Res> get coords {
+  
+  return $LatLngCopyWith<$Res>(_self.coords, (value) {
+    return _then(_self.copyWith(coords: value));
+  });
+}
+}
+
+// dart format on

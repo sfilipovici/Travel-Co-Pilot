@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:travel_copilot/app/router.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
 
   await Supabase.initialize(
-    url: 'https://ogneckjrdaqswwqmrpza.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9nbmVja2pyZGFxc3d3cW1ycHphIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxOTY4NzMsImV4cCI6MjA3Mzc3Mjg3M30.kwGEl_ALylfR5HLmo3jaOfKoXvJoUyAxYCxX_prZMh8',
+    url: dotenv.env['SUPABASE_URL']!,
+    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
   );
 
   runApp(const ProviderScope(child: MyApp()));

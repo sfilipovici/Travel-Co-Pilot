@@ -1,97 +1,92 @@
-import 'dart:async';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:travel_copilot/app/providers.dart';
-import 'package:travel_copilot/features/auth/auth_controller.dart';
-import 'package:travel_copilot/features/auth/presentation/login_page.dart';
-import 'package:travel_copilot/features/auth/presentation/register_page.dart';
-import 'package:travel_copilot/features/plan/presentation/plan_page.dart';
-import 'package:travel_copilot/features/map/presentation/map_v2_page.dart';
+import 'dart:async';
 import 'package:travel_copilot/features/ar/presentation/ar_page.dart';
+import 'package:travel_copilot/features/common/presentation/root_shell.dart';
+import 'package:travel_copilot/features/itineraries/presentation/itineraries_page.dart';
+import 'package:travel_copilot/features/plan/presentation/plan_page.dart';
 import 'package:travel_copilot/features/profile/presentation/profile_page.dart';
-import 'package:travel_copilot/features/onboarding/presentation/onboarding_flow_page.dart';
+import 'package:travel_copilot/features/auth/presentation/login_page.dart';
+import 'package:travel_copilot/features/auth/auth_controller.dart';
 
-class GoRouterRefreshStream extends ChangeNotifier {
-  GoRouterRefreshStream(Stream<dynamic> stream) {
-    _subscription = stream.asBroadcastStream().listen((_) => notifyListeners());
-  }
-  late final StreamSubscription<dynamic> _subscription;
-
-  @override
-  void dispose() {
-    _subscription.cancel();
-    super.dispose();
-  }
-}
-
+/// Provider for the global router so widgets can watch it via Riverpod
 final appRouterProvider = Provider<GoRouter>((ref) {
   final authState = ref.watch(authControllerProvider);
-  final supabase = ref.watch(supabaseProvider);
 
   return GoRouter(
-    initialLocation: '/plan',
-    refreshListenable: GoRouterRefreshStream(supabase.auth.onAuthStateChange),
+    initialLocation: '/login',
+    refreshListenable: GoRouterRefreshStream(
+      ref.watch(authControllerProvider.notifier).client.auth.onAuthStateChange,
+    ),
+    redirect: (context, state) {
+      final isLoggedIn = authState.asData?.value != null;
+      final currentPath = state.uri.path;
+      final loggingIn = currentPath == '/login' || currentPath == '/register';
+
+      if (!isLoggedIn) {
+        // not logged in → always redirect to login unless already there
+        return loggingIn ? null : '/login';
+      }
+
+      if (isLoggedIn && loggingIn) {
+        // logged in but trying to go to /login → send to plan
+        return '/plan';
+      }
+
+      return null;
+    },
     routes: [
-      GoRoute(path: '/login', builder: (c, s) => const LoginPage()),
-      GoRoute(path: '/register', builder: (c, s) => const RegisterPage()),
-
-      // ✅ Add the onboarding route here
       GoRoute(
-        path: '/onboarding',
-        builder: (c, s) => const OnboardingFlowPage(),
+        path: '/login',
+        name: 'login',
+        pageBuilder: (context, state) =>
+            const NoTransitionPage(child: LoginPage()),
       ),
-
-      /// Main shell with bottom nav
-      StatefulShellRoute.indexedStack(
-        builder: (context, state, navShell) {
-          return Scaffold(
-            body: navShell,
-            bottomNavigationBar: NavigationBar(
-              selectedIndex: navShell.currentIndex,
-              onDestinationSelected: navShell.goBranch,
-              destinations: const [
-                NavigationDestination(icon: Icon(Icons.event), label: 'Plan'),
-                NavigationDestination(icon: Icon(Icons.map), label: 'Map'),
-                NavigationDestination(icon: Icon(Icons.camera), label: 'AR'),
-                NavigationDestination(
-                    icon: Icon(Icons.person), label: 'Profile'),
-              ],
-            ),
-          );
-        },
-        branches: [
-          StatefulShellBranch(
-            routes: [
-              GoRoute(path: '/plan', builder: (c, s) => const PlanPage()),
-            ],
+      ShellRoute(
+        builder: (context, state, child) => RootShell(child: child),
+        routes: [
+          GoRoute(
+            path: '/plan',
+            name: 'plan',
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: PlanPage()),
           ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(path: '/map', builder: (c, s) => const MapV2Page()),
-            ],
+          GoRoute(
+            path: '/itineraries',
+            name: 'itineraries',
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: ItineraryPage()),
           ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(path: '/ar', builder: (c, s) => const ARPage()),
-            ],
+          GoRoute(
+            path: '/ar',
+            name: 'ar',
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: ARPage()),
           ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(path: '/profile', builder: (c, s) => const ProfilePage()),
-            ],
+          GoRoute(
+            path: '/profile',
+            name: 'profile',
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: ProfilePage()),
           ),
         ],
       ),
     ],
-    redirect: (context, state) {
-      final isLoggedIn = authState.value != null;
-      final loggingIn = state.uri.toString() == '/login' ||
-          state.uri.toString() == '/register';
-
-      if (!isLoggedIn && !loggingIn) return '/login';
-      if (isLoggedIn && loggingIn) return '/plan';
-      return null;
-    },
   );
 });
+
+// Simple adapter to convert a Stream into a ChangeNotifier for GoRouter
+class GoRouterRefreshStream extends ChangeNotifier {
+  GoRouterRefreshStream(Stream<dynamic> stream) {
+    _sub = stream.asBroadcastStream().listen((_) => notifyListeners());
+  }
+
+  late final StreamSubscription<dynamic> _sub;
+
+  @override
+  void dispose() {
+    _sub.cancel();
+    super.dispose();
+  }
+}

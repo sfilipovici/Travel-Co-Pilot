@@ -33,9 +33,15 @@ class DownloadsController extends StateNotifier<List<DownloadItem>> {
 
   final _timers = <String, Timer>{};
 
-  DownloadItem? _find(String id) => state.firstWhere((e) => e.id == id,
-      orElse: () => const DownloadItem(
-          id: '', title: '', sizeMB: 0, type: DownloadType.mapTiles));
+  DownloadItem? _find(String id) => state.firstWhere(
+        (e) => e.id == id,
+        orElse: () => const DownloadItem(
+          id: '',
+          title: '',
+          sizeMB: 0,
+          type: DownloadType.mapTiles,
+        ),
+      );
 
   void _update(String id, DownloadItem Function(DownloadItem) upd) {
     state = [
@@ -82,10 +88,11 @@ class DownloadsController extends StateNotifier<List<DownloadItem>> {
     _timers[id]?.cancel();
     _timers.remove(id);
     _update(
-        id,
-        (e) => e.status == DownloadStatus.downloading
-            ? e.copyWith(status: DownloadStatus.paused)
-            : e);
+      id,
+      (e) => e.status == DownloadStatus.downloading
+          ? e.copyWith(status: DownloadStatus.paused)
+          : e,
+    );
   }
 
   void resume(String id) {
@@ -100,16 +107,20 @@ class DownloadsController extends StateNotifier<List<DownloadItem>> {
   void cancel(String id) {
     _timers[id]?.cancel();
     _timers.remove(id);
-    _update(id,
-        (e) => e.copyWith(status: DownloadStatus.notStarted, progress: 0.0));
+    _update(
+      id,
+      (e) => e.copyWith(status: DownloadStatus.notStarted, progress: 0),
+    );
   }
 
   void delete(String id) {
     // Reset to not started (mock: we don’t manage filesystem yet)
     _timers[id]?.cancel();
     _timers.remove(id);
-    _update(id,
-        (e) => e.copyWith(status: DownloadStatus.notStarted, progress: 0.0));
+    _update(
+      id,
+      (e) => e.copyWith(status: DownloadStatus.notStarted, progress: 0),
+    );
   }
 
   @override

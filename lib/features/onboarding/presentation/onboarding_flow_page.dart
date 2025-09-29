@@ -38,7 +38,12 @@ class _OnboardingFlowPageState extends ConsumerState<OnboardingFlowPage> {
         startDate: DateTime(_start.year, _start.month, _start.day),
         days: _days,
         interests: _interests.toList(),
-        budgetLevel: _budget,
+        budget: switch (_budget) {
+          1 => r'$',
+          2 => r'$$',
+          3 => r'$$$',
+          _ => r'$$',
+        },
       );
 
       final trip = await repo.generate(prefs);
@@ -51,9 +56,9 @@ class _OnboardingFlowPageState extends ConsumerState<OnboardingFlowPage> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to generate trip: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Failed to generate trip: $e')));
       }
     } finally {
       if (mounted) setState(() => _loading = false);
@@ -90,17 +95,20 @@ class _OnboardingFlowPageState extends ConsumerState<OnboardingFlowPage> {
                 child: Row(
                   children: [
                     Text(
-                        '${_start.year}-${_start.month.toString().padLeft(2, '0')}-${_start.day.toString().padLeft(2, '0')}'),
+                      '${_start.year}-${_start.month.toString().padLeft(2, '0')}-${_start.day.toString().padLeft(2, '0')}',
+                    ),
                     const Spacer(),
                     TextButton(
                       onPressed: () async {
                         final picked = await showDatePicker(
                           context: context,
                           initialDate: _start,
-                          firstDate:
-                              DateTime.now().subtract(const Duration(days: 1)),
-                          lastDate:
-                              DateTime.now().add(const Duration(days: 365)),
+                          firstDate: DateTime.now().subtract(
+                            const Duration(days: 1),
+                          ),
+                          lastDate: DateTime.now().add(
+                            const Duration(days: 365),
+                          ),
                         );
                         if (picked != null) setState(() => _start = picked);
                       },
@@ -126,9 +134,9 @@ class _OnboardingFlowPageState extends ConsumerState<OnboardingFlowPage> {
                 label: 'Budget',
                 child: SegmentedButton<int>(
                   segments: const [
-                    ButtonSegment(value: 1, label: Text('\$')),
-                    ButtonSegment(value: 2, label: Text('\$\$')),
-                    ButtonSegment(value: 3, label: Text('\$\$\$')),
+                    ButtonSegment(value: 1, label: Text(r'$')),
+                    ButtonSegment(value: 2, label: Text(r'$$')),
+                    ButtonSegment(value: 3, label: Text(r'$$$')),
                   ],
                   selected: {_budget},
                   onSelectionChanged: (s) => setState(() => _budget = s.first),
@@ -146,7 +154,7 @@ class _OnboardingFlowPageState extends ConsumerState<OnboardingFlowPage> {
                       'culture',
                       'nightlife',
                       'family',
-                      'hiking'
+                      'hiking',
                     ])
                       FilterChip(
                         label: Text(tag),

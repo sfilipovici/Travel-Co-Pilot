@@ -6,16 +6,15 @@ part of 'app_settings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AppSettingsImpl _$$AppSettingsImplFromJson(Map<String, dynamic> json) =>
-    _$AppSettingsImpl(
-      languageCode: json['languageCode'] as String? ?? 'en',
-      useMetric: json['useMetric'] as bool? ?? true,
-      pushEnabled: json['pushEnabled'] as bool? ?? true,
-      inAppHintsEnabled: json['inAppHintsEnabled'] as bool? ?? true,
-      shareAnonCrowdData: json['shareAnonCrowdData'] as bool? ?? false,
-    );
+_AppSettings _$AppSettingsFromJson(Map<String, dynamic> json) => _AppSettings(
+  languageCode: json['languageCode'] as String? ?? 'en',
+  useMetric: json['useMetric'] as bool? ?? true,
+  pushEnabled: json['pushEnabled'] as bool? ?? true,
+  inAppHintsEnabled: json['inAppHintsEnabled'] as bool? ?? true,
+  shareAnonCrowdData: json['shareAnonCrowdData'] as bool? ?? false,
+);
 
-Map<String, dynamic> _$$AppSettingsImplToJson(_$AppSettingsImpl instance) =>
+Map<String, dynamic> _$AppSettingsToJson(_AppSettings instance) =>
     <String, dynamic>{
       'languageCode': instance.languageCode,
       'useMetric': instance.useMetric,

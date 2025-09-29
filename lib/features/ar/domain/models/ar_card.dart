@@ -4,7 +4,7 @@ part 'ar_card.freezed.dart';
 part 'ar_card.g.dart';
 
 @freezed
-class AROverlay with _$AROverlay {
+abstract class AROverlay with _$AROverlay {
   const factory AROverlay({
     required String id,
     @Default('marker') String type,
@@ -15,7 +15,7 @@ class AROverlay with _$AROverlay {
 }
 
 @freezed
-class ARCard with _$ARCard {
+abstract class ARCard with _$ARCard {
   const factory ARCard({
     required String arCardId,
     required String poiId,

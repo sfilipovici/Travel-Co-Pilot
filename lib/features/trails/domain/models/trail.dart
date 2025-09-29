@@ -5,7 +5,7 @@ part 'trail.freezed.dart';
 part 'trail.g.dart';
 
 @freezed
-class Trail with _$Trail {
+abstract class Trail with _$Trail {
   const factory Trail({
     required String trailId,
     required String name,
@@ -18,7 +18,7 @@ class Trail with _$Trail {
 }
 
 @freezed
-class TrailCheckpoint with _$TrailCheckpoint {
+abstract class TrailCheckpoint with _$TrailCheckpoint {
   const factory TrailCheckpoint({
     required String title,
     required LatLng coords,

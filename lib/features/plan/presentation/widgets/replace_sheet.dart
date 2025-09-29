@@ -4,8 +4,11 @@ import 'package:travel_copilot/features/trip/domain/models/trip.dart';
 import 'package:travel_copilot/features/trip/domain/trip_repository.dart';
 
 class ReplaceSheet extends ConsumerWidget {
-  const ReplaceSheet(
-      {super.key, required this.block, required this.onReplaced});
+  const ReplaceSheet({
+    required this.block,
+    required this.onReplaced,
+    super.key,
+  });
 
   final TripBlock block;
   final Future<void> Function(TripBlock alt) onReplaced;

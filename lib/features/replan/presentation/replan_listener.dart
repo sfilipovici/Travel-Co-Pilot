@@ -43,7 +43,6 @@ class _ReplanListenerState extends ConsumerState<ReplanListener> {
       final controller = ref.read(replanControllerProvider.notifier);
       await showDialog<void>(
         context: navContext,
-        useRootNavigator: true,
         builder: (ctx) => AlertDialog(
           title: Text(next.title),
           content: Text(next.message),

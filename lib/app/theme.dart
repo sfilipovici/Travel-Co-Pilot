@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 /// Keep this small and opinionated so features can override per-Widget as needed.
 ThemeData buildTheme({Brightness? platformBrightness}) {
   // If not provided, read from platform at runtime (safe on hot reload)
-  final brightness =
-      platformBrightness ??
+  final brightness = platformBrightness ??
       WidgetsBinding.instance.platformDispatcher.platformBrightness;
 
   final colorScheme = ColorScheme.fromSeed(

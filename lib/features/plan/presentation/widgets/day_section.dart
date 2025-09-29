@@ -4,13 +4,11 @@ import 'package:travel_copilot/features/trip/domain/models/trip.dart';
 
 class DaySection extends StatelessWidget {
   const DaySection({
-    super.key,
     required this.dayNumber,
     required this.blocks,
     required this.isExpanded,
     required this.onToggle,
-    this.onDetails,
-    this.onReplace,
+    super.key,
     this.onReorder,
   });
 
@@ -18,8 +16,6 @@ class DaySection extends StatelessWidget {
   final List<TripBlock> blocks;
   final bool isExpanded;
   final VoidCallback onToggle;
-  final void Function(TripBlock block)? onDetails;
-  final void Function(int blockIndex, TripBlock block)? onReplace;
   final void Function(int oldIndex, int newIndex)? onReorder;
 
   @override
@@ -59,21 +55,27 @@ class DaySection extends StatelessWidget {
                 crossFadeState: isExpanded
                     ? CrossFadeState.showFirst
                     : CrossFadeState.showSecond,
-                firstChild: ReorderableListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  buildDefaultDragHandles: true,
-                  onReorder: (int oldIndex, int newIndex) {
-                    onReorder?.call(oldIndex, newIndex);
-                  },
-                  children: [
-                    for (var i = 0; i < blocks.length; i++)
-                      ActivityCard(
-                        key: ValueKey('${dayNumber}_$i'),
-                        block: blocks[i],
+                firstChild: blocks.isEmpty
+                    ? const Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Center(
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        ),
+                      )
+                    : ReorderableListView(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        onReorder: (int oldIndex, int newIndex) {
+                          onReorder?.call(oldIndex, newIndex);
+                        },
+                        children: [
+                          for (var i = 0; i < blocks.length; i++)
+                            ActivityCard(
+                              key: ValueKey('${dayNumber}_$i'),
+                              block: blocks[i],
+                            ),
+                        ],
                       ),
-                  ],
-                ),
                 secondChild: const SizedBox.shrink(),
               ),
             ],

@@ -42,5 +42,5 @@ class ReplanController extends StateNotifier<ReplanSuggestion?> {
 
 final replanControllerProvider =
     StateNotifierProvider<ReplanController, ReplanSuggestion?>(
-      (ref) => ReplanController(),
-    );
+  (ref) => ReplanController(),
+);

@@ -34,20 +34,26 @@ class MapFilters {
 final mapFiltersProvider = StateProvider<MapFilters>((_) => const MapFilters());
 
 /// POIs filtered by [mapFiltersProvider].
-final filteredPoisProvider = FutureProvider<List<POI>>((ref) async {
-  final all = await ref.watch(poiListProvider.future);
+final filteredPoisProvider =
+    FutureProvider.family<List<POI>, Map<String, dynamic>>((ref, args) async {
+  final all = await ref.watch(poiListProvider(args).future);
   final f = ref.watch(mapFiltersProvider);
 
   return all.where((p) {
-    if (f.maxPriceLevel != null && p.priceLevel > f.maxPriceLevel!)
+    if (f.maxPriceLevel != null && (p.priceLevel ?? 0) > f.maxPriceLevel!) {
       return false;
-    if (f.minRating != null && p.rating < f.minRating!) return false;
+    }
+    if (f.minRating != null && (p.rating ?? 0) < f.minRating!) return false;
 
-    // Heuristics for flags (mock for now)
-    if (f.familyFriendly && p.category.toLowerCase().contains('bar'))
+    // Heuristics for flags
+    if (f.familyFriendly &&
+        p.categories.any((c) => c.toLowerCase().contains('bar'))) {
       return false;
-    if (f.lessTouristy && p.name.toLowerCase().contains('museum')) return false;
+    }
+    if (f.lessTouristy && p.name.toLowerCase().contains('museum')) {
+      return false;
+    }
 
     return true;
   }).toList();
-}, dependencies: [poiListProvider, mapFiltersProvider]);
+});

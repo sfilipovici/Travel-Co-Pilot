@@ -4,7 +4,7 @@ part 'user.freezed.dart';
 part 'user.g.dart';
 
 @freezed
-class UserSettings with _$UserSettings {
+abstract class UserSettings with _$UserSettings {
   const factory UserSettings({
     @Default('en') String language,
     @Default('metric') String units,
@@ -16,7 +16,7 @@ class UserSettings with _$UserSettings {
 }
 
 @freezed
-class User with _$User {
+abstract class User with _$User {
   const factory User({
     required String uid,
     required UserSettings settings,

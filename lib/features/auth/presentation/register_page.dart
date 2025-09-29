@@ -101,7 +101,7 @@ class RegisterPage extends ConsumerWidget {
                     ),
                   if (authState.hasError)
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(8),
                       child: Text(
                         authState.error.toString(),
                         style: const TextStyle(color: Colors.red),

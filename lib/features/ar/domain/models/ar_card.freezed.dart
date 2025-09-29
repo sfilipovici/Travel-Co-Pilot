@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,414 +9,553 @@ part of 'ar_card.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AROverlay _$AROverlayFromJson(Map<String, dynamic> json) {
-  return _AROverlay.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AROverlay {
-  String get id => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
+
+ String get id; String get type;
+/// Create a copy of AROverlay
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AROverlayCopyWith<AROverlay> get copyWith => _$AROverlayCopyWithImpl<AROverlay>(this as AROverlay, _$identity);
 
   /// Serializes this AROverlay to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of AROverlay
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AROverlayCopyWith<AROverlay> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AROverlay&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,type);
+
+@override
+String toString() {
+  return 'AROverlay(id: $id, type: $type)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AROverlayCopyWith<$Res> {
-  factory $AROverlayCopyWith(AROverlay value, $Res Function(AROverlay) then) =
-      _$AROverlayCopyWithImpl<$Res, AROverlay>;
-  @useResult
-  $Res call({String id, String type});
-}
+abstract mixin class $AROverlayCopyWith<$Res>  {
+  factory $AROverlayCopyWith(AROverlay value, $Res Function(AROverlay) _then) = _$AROverlayCopyWithImpl;
+@useResult
+$Res call({
+ String id, String type
+});
 
+
+
+
+}
 /// @nodoc
-class _$AROverlayCopyWithImpl<$Res, $Val extends AROverlay>
+class _$AROverlayCopyWithImpl<$Res>
     implements $AROverlayCopyWith<$Res> {
-  _$AROverlayCopyWithImpl(this._value, this._then);
+  _$AROverlayCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final AROverlay _self;
+  final $Res Function(AROverlay) _then;
 
-  /// Create a copy of AROverlay
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? type = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of AROverlay
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? type = null,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$AROverlayImplCopyWith<$Res>
-    implements $AROverlayCopyWith<$Res> {
-  factory _$$AROverlayImplCopyWith(
-          _$AROverlayImpl value, $Res Function(_$AROverlayImpl) then) =
-      __$$AROverlayImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String id, String type});
 }
 
-/// @nodoc
-class __$$AROverlayImplCopyWithImpl<$Res>
-    extends _$AROverlayCopyWithImpl<$Res, _$AROverlayImpl>
-    implements _$$AROverlayImplCopyWith<$Res> {
-  __$$AROverlayImplCopyWithImpl(
-      _$AROverlayImpl _value, $Res Function(_$AROverlayImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AROverlay
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? type = null,
-  }) {
-    return _then(_$AROverlayImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+/// Adds pattern-matching-related methods to [AROverlay].
+extension AROverlayPatterns on AROverlay {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _AROverlay value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _AROverlay() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _AROverlay value)  $default,){
+final _that = this;
+switch (_that) {
+case _AROverlay():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _AROverlay value)?  $default,){
+final _that = this;
+switch (_that) {
+case _AROverlay() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String type)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _AROverlay() when $default != null:
+return $default(_that.id,_that.type);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String type)  $default,) {final _that = this;
+switch (_that) {
+case _AROverlay():
+return $default(_that.id,_that.type);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String type)?  $default,) {final _that = this;
+switch (_that) {
+case _AROverlay() when $default != null:
+return $default(_that.id,_that.type);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AROverlayImpl implements _AROverlay {
-  const _$AROverlayImpl({required this.id, this.type = 'marker'});
 
-  factory _$AROverlayImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AROverlayImplFromJson(json);
+class _AROverlay implements AROverlay {
+  const _AROverlay({required this.id, this.type = 'marker'});
+  factory _AROverlay.fromJson(Map<String, dynamic> json) => _$AROverlayFromJson(json);
 
-  @override
-  final String id;
-  @override
-  @JsonKey()
-  final String type;
+@override final  String id;
+@override@JsonKey() final  String type;
 
-  @override
-  String toString() {
-    return 'AROverlay(id: $id, type: $type)';
-  }
+/// Create a copy of AROverlay
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AROverlayCopyWith<_AROverlay> get copyWith => __$AROverlayCopyWithImpl<_AROverlay>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AROverlayImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.type, type) || other.type == type));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, type);
-
-  /// Create a copy of AROverlay
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AROverlayImplCopyWith<_$AROverlayImpl> get copyWith =>
-      __$$AROverlayImplCopyWithImpl<_$AROverlayImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AROverlayImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$AROverlayToJson(this, );
 }
 
-abstract class _AROverlay implements AROverlay {
-  const factory _AROverlay({required final String id, final String type}) =
-      _$AROverlayImpl;
-
-  factory _AROverlay.fromJson(Map<String, dynamic> json) =
-      _$AROverlayImpl.fromJson;
-
-  @override
-  String get id;
-  @override
-  String get type;
-
-  /// Create a copy of AROverlay
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AROverlayImplCopyWith<_$AROverlayImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AROverlay&&(identical(other.id, id) || other.id == id)&&(identical(other.type, type) || other.type == type));
 }
 
-ARCard _$ARCardFromJson(Map<String, dynamic> json) {
-  return _ARCard.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,type);
+
+@override
+String toString() {
+  return 'AROverlay(id: $id, type: $type)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AROverlayCopyWith<$Res> implements $AROverlayCopyWith<$Res> {
+  factory _$AROverlayCopyWith(_AROverlay value, $Res Function(_AROverlay) _then) = __$AROverlayCopyWithImpl;
+@override @useResult
+$Res call({
+ String id, String type
+});
+
+
+
+
+}
+/// @nodoc
+class __$AROverlayCopyWithImpl<$Res>
+    implements _$AROverlayCopyWith<$Res> {
+  __$AROverlayCopyWithImpl(this._self, this._then);
+
+  final _AROverlay _self;
+  final $Res Function(_AROverlay) _then;
+
+/// Create a copy of AROverlay
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? type = null,}) {
+  return _then(_AROverlay(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$ARCard {
-  String get arCardId => throw _privateConstructorUsedError;
-  String get poiId => throw _privateConstructorUsedError;
-  String get shortStory => throw _privateConstructorUsedError;
-  String get audioUrl => throw _privateConstructorUsedError;
-  List<AROverlay> get overlays => throw _privateConstructorUsedError;
+
+ String get arCardId; String get poiId; String get shortStory; String get audioUrl; List<AROverlay> get overlays;
+/// Create a copy of ARCard
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ARCardCopyWith<ARCard> get copyWith => _$ARCardCopyWithImpl<ARCard>(this as ARCard, _$identity);
 
   /// Serializes this ARCard to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of ARCard
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ARCardCopyWith<ARCard> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ARCard&&(identical(other.arCardId, arCardId) || other.arCardId == arCardId)&&(identical(other.poiId, poiId) || other.poiId == poiId)&&(identical(other.shortStory, shortStory) || other.shortStory == shortStory)&&(identical(other.audioUrl, audioUrl) || other.audioUrl == audioUrl)&&const DeepCollectionEquality().equals(other.overlays, overlays));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,arCardId,poiId,shortStory,audioUrl,const DeepCollectionEquality().hash(overlays));
+
+@override
+String toString() {
+  return 'ARCard(arCardId: $arCardId, poiId: $poiId, shortStory: $shortStory, audioUrl: $audioUrl, overlays: $overlays)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ARCardCopyWith<$Res> {
-  factory $ARCardCopyWith(ARCard value, $Res Function(ARCard) then) =
-      _$ARCardCopyWithImpl<$Res, ARCard>;
-  @useResult
-  $Res call(
-      {String arCardId,
-      String poiId,
-      String shortStory,
-      String audioUrl,
-      List<AROverlay> overlays});
-}
+abstract mixin class $ARCardCopyWith<$Res>  {
+  factory $ARCardCopyWith(ARCard value, $Res Function(ARCard) _then) = _$ARCardCopyWithImpl;
+@useResult
+$Res call({
+ String arCardId, String poiId, String shortStory, String audioUrl, List<AROverlay> overlays
+});
 
+
+
+
+}
 /// @nodoc
-class _$ARCardCopyWithImpl<$Res, $Val extends ARCard>
+class _$ARCardCopyWithImpl<$Res>
     implements $ARCardCopyWith<$Res> {
-  _$ARCardCopyWithImpl(this._value, this._then);
+  _$ARCardCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ARCard _self;
+  final $Res Function(ARCard) _then;
 
-  /// Create a copy of ARCard
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? arCardId = null,
-    Object? poiId = null,
-    Object? shortStory = null,
-    Object? audioUrl = null,
-    Object? overlays = null,
-  }) {
-    return _then(_value.copyWith(
-      arCardId: null == arCardId
-          ? _value.arCardId
-          : arCardId // ignore: cast_nullable_to_non_nullable
-              as String,
-      poiId: null == poiId
-          ? _value.poiId
-          : poiId // ignore: cast_nullable_to_non_nullable
-              as String,
-      shortStory: null == shortStory
-          ? _value.shortStory
-          : shortStory // ignore: cast_nullable_to_non_nullable
-              as String,
-      audioUrl: null == audioUrl
-          ? _value.audioUrl
-          : audioUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      overlays: null == overlays
-          ? _value.overlays
-          : overlays // ignore: cast_nullable_to_non_nullable
-              as List<AROverlay>,
-    ) as $Val);
-  }
+/// Create a copy of ARCard
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? arCardId = null,Object? poiId = null,Object? shortStory = null,Object? audioUrl = null,Object? overlays = null,}) {
+  return _then(_self.copyWith(
+arCardId: null == arCardId ? _self.arCardId : arCardId // ignore: cast_nullable_to_non_nullable
+as String,poiId: null == poiId ? _self.poiId : poiId // ignore: cast_nullable_to_non_nullable
+as String,shortStory: null == shortStory ? _self.shortStory : shortStory // ignore: cast_nullable_to_non_nullable
+as String,audioUrl: null == audioUrl ? _self.audioUrl : audioUrl // ignore: cast_nullable_to_non_nullable
+as String,overlays: null == overlays ? _self.overlays : overlays // ignore: cast_nullable_to_non_nullable
+as List<AROverlay>,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ARCardImplCopyWith<$Res> implements $ARCardCopyWith<$Res> {
-  factory _$$ARCardImplCopyWith(
-          _$ARCardImpl value, $Res Function(_$ARCardImpl) then) =
-      __$$ARCardImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String arCardId,
-      String poiId,
-      String shortStory,
-      String audioUrl,
-      List<AROverlay> overlays});
 }
 
-/// @nodoc
-class __$$ARCardImplCopyWithImpl<$Res>
-    extends _$ARCardCopyWithImpl<$Res, _$ARCardImpl>
-    implements _$$ARCardImplCopyWith<$Res> {
-  __$$ARCardImplCopyWithImpl(
-      _$ARCardImpl _value, $Res Function(_$ARCardImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of ARCard
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? arCardId = null,
-    Object? poiId = null,
-    Object? shortStory = null,
-    Object? audioUrl = null,
-    Object? overlays = null,
-  }) {
-    return _then(_$ARCardImpl(
-      arCardId: null == arCardId
-          ? _value.arCardId
-          : arCardId // ignore: cast_nullable_to_non_nullable
-              as String,
-      poiId: null == poiId
-          ? _value.poiId
-          : poiId // ignore: cast_nullable_to_non_nullable
-              as String,
-      shortStory: null == shortStory
-          ? _value.shortStory
-          : shortStory // ignore: cast_nullable_to_non_nullable
-              as String,
-      audioUrl: null == audioUrl
-          ? _value.audioUrl
-          : audioUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      overlays: null == overlays
-          ? _value._overlays
-          : overlays // ignore: cast_nullable_to_non_nullable
-              as List<AROverlay>,
-    ));
-  }
+/// Adds pattern-matching-related methods to [ARCard].
+extension ARCardPatterns on ARCard {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ARCard value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ARCard() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ARCard value)  $default,){
+final _that = this;
+switch (_that) {
+case _ARCard():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ARCard value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ARCard() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String arCardId,  String poiId,  String shortStory,  String audioUrl,  List<AROverlay> overlays)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ARCard() when $default != null:
+return $default(_that.arCardId,_that.poiId,_that.shortStory,_that.audioUrl,_that.overlays);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String arCardId,  String poiId,  String shortStory,  String audioUrl,  List<AROverlay> overlays)  $default,) {final _that = this;
+switch (_that) {
+case _ARCard():
+return $default(_that.arCardId,_that.poiId,_that.shortStory,_that.audioUrl,_that.overlays);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String arCardId,  String poiId,  String shortStory,  String audioUrl,  List<AROverlay> overlays)?  $default,) {final _that = this;
+switch (_that) {
+case _ARCard() when $default != null:
+return $default(_that.arCardId,_that.poiId,_that.shortStory,_that.audioUrl,_that.overlays);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ARCardImpl implements _ARCard {
-  const _$ARCardImpl(
-      {required this.arCardId,
-      required this.poiId,
-      required this.shortStory,
-      this.audioUrl = '',
-      final List<AROverlay> overlays = const <AROverlay>[]})
-      : _overlays = overlays;
 
-  factory _$ARCardImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ARCardImplFromJson(json);
+class _ARCard implements ARCard {
+  const _ARCard({required this.arCardId, required this.poiId, required this.shortStory, this.audioUrl = '', final  List<AROverlay> overlays = const <AROverlay>[]}): _overlays = overlays;
+  factory _ARCard.fromJson(Map<String, dynamic> json) => _$ARCardFromJson(json);
 
-  @override
-  final String arCardId;
-  @override
-  final String poiId;
-  @override
-  final String shortStory;
-  @override
-  @JsonKey()
-  final String audioUrl;
-  final List<AROverlay> _overlays;
-  @override
-  @JsonKey()
-  List<AROverlay> get overlays {
-    if (_overlays is EqualUnmodifiableListView) return _overlays;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_overlays);
-  }
-
-  @override
-  String toString() {
-    return 'ARCard(arCardId: $arCardId, poiId: $poiId, shortStory: $shortStory, audioUrl: $audioUrl, overlays: $overlays)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ARCardImpl &&
-            (identical(other.arCardId, arCardId) ||
-                other.arCardId == arCardId) &&
-            (identical(other.poiId, poiId) || other.poiId == poiId) &&
-            (identical(other.shortStory, shortStory) ||
-                other.shortStory == shortStory) &&
-            (identical(other.audioUrl, audioUrl) ||
-                other.audioUrl == audioUrl) &&
-            const DeepCollectionEquality().equals(other._overlays, _overlays));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, arCardId, poiId, shortStory,
-      audioUrl, const DeepCollectionEquality().hash(_overlays));
-
-  /// Create a copy of ARCard
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ARCardImplCopyWith<_$ARCardImpl> get copyWith =>
-      __$$ARCardImplCopyWithImpl<_$ARCardImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ARCardImplToJson(
-      this,
-    );
-  }
+@override final  String arCardId;
+@override final  String poiId;
+@override final  String shortStory;
+@override@JsonKey() final  String audioUrl;
+ final  List<AROverlay> _overlays;
+@override@JsonKey() List<AROverlay> get overlays {
+  if (_overlays is EqualUnmodifiableListView) return _overlays;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_overlays);
 }
 
-abstract class _ARCard implements ARCard {
-  const factory _ARCard(
-      {required final String arCardId,
-      required final String poiId,
-      required final String shortStory,
-      final String audioUrl,
-      final List<AROverlay> overlays}) = _$ARCardImpl;
 
-  factory _ARCard.fromJson(Map<String, dynamic> json) = _$ARCardImpl.fromJson;
+/// Create a copy of ARCard
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ARCardCopyWith<_ARCard> get copyWith => __$ARCardCopyWithImpl<_ARCard>(this, _$identity);
 
-  @override
-  String get arCardId;
-  @override
-  String get poiId;
-  @override
-  String get shortStory;
-  @override
-  String get audioUrl;
-  @override
-  List<AROverlay> get overlays;
-
-  /// Create a copy of ARCard
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ARCardImplCopyWith<_$ARCardImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$ARCardToJson(this, );
 }
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ARCard&&(identical(other.arCardId, arCardId) || other.arCardId == arCardId)&&(identical(other.poiId, poiId) || other.poiId == poiId)&&(identical(other.shortStory, shortStory) || other.shortStory == shortStory)&&(identical(other.audioUrl, audioUrl) || other.audioUrl == audioUrl)&&const DeepCollectionEquality().equals(other._overlays, _overlays));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,arCardId,poiId,shortStory,audioUrl,const DeepCollectionEquality().hash(_overlays));
+
+@override
+String toString() {
+  return 'ARCard(arCardId: $arCardId, poiId: $poiId, shortStory: $shortStory, audioUrl: $audioUrl, overlays: $overlays)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ARCardCopyWith<$Res> implements $ARCardCopyWith<$Res> {
+  factory _$ARCardCopyWith(_ARCard value, $Res Function(_ARCard) _then) = __$ARCardCopyWithImpl;
+@override @useResult
+$Res call({
+ String arCardId, String poiId, String shortStory, String audioUrl, List<AROverlay> overlays
+});
+
+
+
+
+}
+/// @nodoc
+class __$ARCardCopyWithImpl<$Res>
+    implements _$ARCardCopyWith<$Res> {
+  __$ARCardCopyWithImpl(this._self, this._then);
+
+  final _ARCard _self;
+  final $Res Function(_ARCard) _then;
+
+/// Create a copy of ARCard
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? arCardId = null,Object? poiId = null,Object? shortStory = null,Object? audioUrl = null,Object? overlays = null,}) {
+  return _then(_ARCard(
+arCardId: null == arCardId ? _self.arCardId : arCardId // ignore: cast_nullable_to_non_nullable
+as String,poiId: null == poiId ? _self.poiId : poiId // ignore: cast_nullable_to_non_nullable
+as String,shortStory: null == shortStory ? _self.shortStory : shortStory // ignore: cast_nullable_to_non_nullable
+as String,audioUrl: null == audioUrl ? _self.audioUrl : audioUrl // ignore: cast_nullable_to_non_nullable
+as String,overlays: null == overlays ? _self._overlays : overlays // ignore: cast_nullable_to_non_nullable
+as List<AROverlay>,
+  ));
+}
+
+
+}
+
+// dart format on
